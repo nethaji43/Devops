@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Software Delivery Lifecycle — DevOps Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  :root{ --ring-color:#A371F7; --tc:#A371F7; }
+  body{ background:radial-gradient(ellipse 900px 500px at 15% -10%, rgba(163,113,247,0.08), transparent), var(--bg); }
+  .hero{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
+  .section{margin-top:34px; border:1px solid var(--border); border-radius:14px; background:var(--surface); overflow:hidden;}
+  .section.hidden{display:none;}
+  .section-head{display:flex; align-items:center; gap:10px; padding:16px 20px; border-bottom:1px solid var(--border); flex-wrap:wrap;}
+  .section-title{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16.5px;}
+  .star{color:#E3B341; font-size:14px;}
+  .section-count{margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--text-faint); background:var(--surface-2); border:1px solid var(--border); border-radius:20px; padding:3px 10px;}
+  .group-tag{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#0D1117; background:var(--tc); border-radius:5px; padding:2px 7px; letter-spacing:.05em;}
+  .section .note, .section .cmdbox, .section .workflow{margin-left:20px; margin-right:20px;}
+  .items{padding:6px 8px 16px;}
+  .item{display:flex; align-items:flex-start; gap:12px; padding:9px 12px; border-radius:9px; transition:background .12s;}
+  .item:hover{background:var(--surface-2);}
+  .check{width:20px; height:20px; border-radius:6px; border:2px solid var(--border); flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--bg); cursor:pointer; transition:all .15s;}
+  .item.done .check{background:var(--tc); border-color:var(--tc);}
+  .item-num{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-faint); flex-shrink:0; width:26px; margin-top:2px;}
+  .item-body{flex:1; min-width:0;}
+  a.item-text{font-size:14.5px; color:var(--text); transition:color .15s;}
+  a.item-text:hover{color:var(--tc);}
+  .item.done .item-text{color:var(--text-dim);}
+  .item-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;}
+  .item-tag{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--text-faint); background:var(--surface-2); border:1px solid var(--border); border-radius:5px; padding:2px 7px;}
+  .opt-tag{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-faint); border:1px solid var(--border); border-radius:5px; padding:1px 6px; margin-left:6px;}
+  .item.item-hidden{display:none;}
+  .workflow{padding:18px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; margin-top:14px; margin-bottom:18px;}
+  .wf-step{display:flex; align-items:center; gap:12px;}
+  .wf-dot{width:10px; height:10px; border-radius:50%; background:var(--tc); flex-shrink:0;}
+  .wf-text{font-family:'JetBrains Mono',monospace; font-size:13px;}
+  .wf-line{width:2px; height:16px; background:var(--tc); opacity:.35; margin-left:4px;}
+</style>
+</head>
+<body>
+<div class="wrap narrow">
+  <a class="back" href="../../index.html">&larr; BACK TO ROADMAP</a>
+  <p class="crumb"><b>Foundations</b> &middot; Topic 2 of 101</p>
+  <div class="hero">
+    <div>
+      <h1>Software Delivery Lifecycle</h1>
+      <p class="sub">How software moves from requirements to production and back: planning, design, testing, release, operations, SDLC models and feedback. Click any item to open its notes, practice, and Q&amp;A.</p>
+    </div>
+    <div class="ring-wrap">
+      <svg class="ring" width="60" height="60" viewBox="0 0 64 64">
+        <circle class="ring-track" cx="32" cy="32" r="27"></circle>
+        <circle id="ringFill" class="ring-fill" cx="32" cy="32" r="27"></circle>
+      </svg>
+      <div><div class="ring-num" id="progressNum">0/214</div><div class="ring-label">LEARNED</div></div>
+    </div>
+  </div>
+  <input class="search" id="search" type="text" placeholder="Search within Software Delivery Lifecycle — e.g. rollback, user story, Scrum..." style="margin-top:28px;" />
+  <div id="sections"></div>
+  <div class="footer"><span class="footer-note">PROGRESS SAVED IN THIS BROWSER &middot; SYNCS WITH THE MAIN ROADMAP</span></div>
+</div>
+<script src="../../assets/common.js"></script>
+<script>
+const TOPIC_ID = 2;                          // = topic number on the main roadmap
+const CONTENT_SLUG = '002-software-delivery-lifecycle'; // = content/<slug>.json, used for item.html links
+const ITEMS_KEY = deTopicItemsKey(TOPIC_ID);
+
+const SECTIONS = [
+ {
+  "title": "2.1 Introduction to the Software Development Lifecycle",
+  "items": [
+   {
+    "t": "What is the Software Development Life Cycle (SDLC)?"
+   },
+   {
+    "t": "Why a defined software lifecycle is important"
+   },
+   {
+    "t": "Main goals of the software development lifecycle"
+   },
+   {
+    "t": "Key stages of the SDLC"
+   },
+   {
+    "t": "Understanding the purpose of each SDLC stage"
+   },
+   {
+    "t": "Who is involved in the software development lifecycle?"
+   },
+   {
+    "t": "Roles and responsibilities of developers, testers, and operations teams"
+   },
+   {
+    "t": "Inputs and outputs of each SDLC stage"
+   },
+   {
+    "t": "What is the Software Delivery Lifecycle?"
+   },
+   {
+    "t": "SDLC vs. Software Delivery Lifecycle"
+   },
+   {
+    "t": "How SDLC connects with DevOps"
+   },
+   {
+    "t": "Traditional software development vs. modern software delivery"
+   },
+   {
+    "t": "Common problems in an unstructured software lifecycle"
+   },
+   {
+    "t": "How a defined lifecycle improves software quality and reliability"
+   },
+   {
+    "t": "Real-world example of a software development lifecycle"
+   },
+   {
+    "t": "Common SDLC terminology"
+   },
+   {
+    "t": "Common misconceptions about SDLC"
+   },
+   {
+    "t": "Summary and key takeaways"
+   }
+  ]
+ },
+ {
+  "title": "2.2 Requirements and Planning",
+  "items": [
+   {
+    "t": "What is software requirement analysis?"
+   },
+   {
+    "t": "Why requirements gathering is important"
+   },
+   {
+    "t": "What are business requirements?"
+   },
+   {
+    "t": "What are functional requirements?"
+   },
+   {
+    "t": "What are non-functional requirements?"
+   },
+   {
+    "t": "Functional vs. non-functional requirements"
+   },
+   {
+    "t": "Who are stakeholders in software development?"
+   },
+   {
+    "t": "How to gather requirements from stakeholders"
+   },
+   {
+    "t": "What are user stories?"
+   },
+   {
+    "t": "What are acceptance criteria?"
+   },
+   {
+    "t": "What is a use case?"
+   },
+   {
+    "t": "What is a software requirement specification (SRS)?"
+   },
+   {
+    "t": "How to prioritize software requirements"
+   },
+   {
+    "t": "What is project scope?"
+   },
+   {
+    "t": "What is scope creep?"
+   },
+   {
+    "t": "How to estimate tasks, effort, and timelines"
+   },
+   {
+    "t": "Identifying project dependencies and risks"
+   },
+   {
+    "t": "What is the Definition of Ready (DoR)?"
+   },
+   {
+    "t": "What is the Definition of Done (DoD)?"
+   },
+   {
+    "t": "How requirements change during software development"
+   },
+   {
+    "t": "How requirements connect to software delivery"
+   },
+   {
+    "t": "Practical example of gathering and planning requirements"
+   }
+  ],
+  "important": true
+ },
+ {
+  "title": "2.3 Software Design and Development",
+  "items": [
+   {
+    "t": "What is software design?"
+   },
+   {
+    "t": "Why software design is important"
+   },
+   {
+    "t": "What is high-level design (HLD)?"
+   },
+   {
+    "t": "What is low-level design (LLD)?"
+   },
+   {
+    "t": "HLD vs. LLD"
+   },
+   {
+    "t": "What is software architecture?"
+   },
+   {
+    "t": "Understanding software components and modules"
+   },
+   {
+    "t": "What are APIs and interfaces?"
+   },
+   {
+    "t": "How design decisions affect development and deployment"
+   },
+   {
+    "t": "What is a development environment?"
+   },
+   {
+    "t": "Understanding coding standards and conventions"
+   },
+   {
+    "t": "Why code reviews are important"
+   },
+   {
+    "t": "What is peer programming?"
+   },
+   {
+    "t": "Managing application dependencies"
+   },
+   {
+    "t": "Managing application configuration"
+   },
+   {
+    "t": "What is source code management?"
+   },
+   {
+    "t": "How developers collaborate on a shared codebase"
+   },
+   {
+    "t": "Common development-stage problems"
+   },
+   {
+    "t": "How to maintain code quality"
+   },
+   {
+    "t": "Practical example of designing and developing a small application"
+   }
+  ]
+ },
+ {
+  "title": "2.4 Software Testing Lifecycle",
+  "items": [
+   {
+    "t": "What is software testing?"
+   },
+   {
+    "t": "Why testing is important in the SDLC"
+   },
+   {
+    "t": "What is a software test plan?"
+   },
+   {
+    "t": "What are test cases and test scenarios?"
+   },
+   {
+    "t": "What is unit testing?"
+   },
+   {
+    "t": "What is integration testing?"
+   },
+   {
+    "t": "What is system testing?"
+   },
+   {
+    "t": "What is user acceptance testing (UAT)?"
+   },
+   {
+    "t": "What is regression testing?"
+   },
+   {
+    "t": "What is performance testing?"
+   },
+   {
+    "t": "What is security testing?"
+   },
+   {
+    "t": "What is reliability testing?"
+   },
+   {
+    "t": "Manual testing vs. automated testing"
+   },
+   {
+    "t": "What is test automation?"
+   },
+   {
+    "t": "What is a test environment?"
+   },
+   {
+    "t": "What is a test data set?"
+   },
+   {
+    "t": "What is a defect or bug?"
+   },
+   {
+    "t": "Understanding the defect lifecycle"
+   },
+   {
+    "t": "What are test entry and exit criteria?"
+   },
+   {
+    "t": "What is a test report?"
+   },
+   {
+    "t": "How testing feedback improves software quality"
+   },
+   {
+    "t": "Common testing-stage problems"
+   },
+   {
+    "t": "Practical example of testing a web application"
+   }
+  ],
+  "important": true
+ },
+ {
+  "title": "2.5 Software Release and Deployment Lifecycle",
+  "items": [
+   {
+    "t": "What is a software release?"
+   },
+   {
+    "t": "What is software deployment?"
+   },
+   {
+    "t": "Release vs. deployment"
+   },
+   {
+    "t": "What is a software build?"
+   },
+   {
+    "t": "What is a build artifact?"
+   },
+   {
+    "t": "What is application packaging?"
+   },
+   {
+    "t": "Understanding software versioning"
+   },
+   {
+    "t": "What are release notes?"
+   },
+   {
+    "t": "What are development, testing, staging, and production environments?"
+   },
+   {
+    "t": "Development vs. staging vs. production"
+   },
+   {
+    "t": "What is release readiness?"
+   },
+   {
+    "t": "What is a release approval process?"
+   },
+   {
+    "t": "What is deployment planning?"
+   },
+   {
+    "t": "What is deployment configuration?"
+   },
+   {
+    "t": "What are database migrations?"
+   },
+   {
+    "t": "What are pre-deployment checks?"
+   },
+   {
+    "t": "What are post-deployment checks?"
+   },
+   {
+    "t": "What is a deployment window?"
+   },
+   {
+    "t": "What is a rollback?"
+   },
+   {
+    "t": "What is release recovery?"
+   },
+   {
+    "t": "Common deployment failures"
+   },
+   {
+    "t": "How to verify a successful deployment"
+   },
+   {
+    "t": "Practical example of releasing a web application"
+   }
+  ],
+  "important": true
+ },
+ {
+  "title": "2.6 Production Operations and Maintenance",
+  "items": [
+   {
+    "t": "What happens after an application reaches production?"
+   },
+   {
+    "t": "What is production support?"
+   },
+   {
+    "t": "What is application maintenance?"
+   },
+   {
+    "t": "What are application health checks?"
+   },
+   {
+    "t": "What is application monitoring?"
+   },
+   {
+    "t": "What are application logs?"
+   },
+   {
+    "t": "What are metrics and alerts?"
+   },
+   {
+    "t": "What is incident management?"
+   },
+   {
+    "t": "What is incident triage?"
+   },
+   {
+    "t": "What are incident severity and priority?"
+   },
+   {
+    "t": "What is escalation management?"
+   },
+   {
+    "t": "What is root cause analysis (RCA)?"
+   },
+   {
+    "t": "What are bug fixes and software patches?"
+   },
+   {
+    "t": "What is change management?"
+   },
+   {
+    "t": "What is backup and recovery?"
+   },
+   {
+    "t": "What is disaster recovery?"
+   },
+   {
+    "t": "Why production documentation is important"
+   },
+   {
+    "t": "What is a support handover?"
+   },
+   {
+    "t": "How production issues influence future development"
+   },
+   {
+    "t": "Common production maintenance challenges"
+   },
+   {
+    "t": "Practical example of handling a production issue"
+   }
+  ]
+ },
+ {
+  "title": "2.7 SDLC Models and Ways of Working",
+  "items": [
+   {
+    "t": "What is an SDLC model?"
+   },
+   {
+    "t": "Why different SDLC models exist"
+   },
+   {
+    "t": "What is the Waterfall model?"
+   },
+   {
+    "t": "Advantages and disadvantages of Waterfall"
+   },
+   {
+    "t": "What is the V-model?"
+   },
+   {
+    "t": "What is the iterative development model?"
+   },
+   {
+    "t": "What is the incremental development model?"
+   },
+   {
+    "t": "What is Agile software development?"
+   },
+   {
+    "t": "What is Scrum?"
+   },
+   {
+    "t": "What are Scrum roles and responsibilities?"
+   },
+   {
+    "t": "What are sprints?"
+   },
+   {
+    "t": "What is a product backlog?"
+   },
+   {
+    "t": "What is a sprint backlog?"
+   },
+   {
+    "t": "What is a daily stand-up meeting?"
+   },
+   {
+    "t": "What is a sprint review?"
+   },
+   {
+    "t": "What is a sprint retrospective?"
+   },
+   {
+    "t": "What is Kanban?"
+   },
+   {
+    "t": "Scrum vs. Kanban"
+   },
+   {
+    "t": "Waterfall vs. Agile"
+   },
+   {
+    "t": "What is a hybrid SDLC model?"
+   },
+   {
+    "t": "How to choose an appropriate SDLC model"
+   },
+   {
+    "t": "How DevOps supports different SDLC models"
+   },
+   {
+    "t": "Common problems with rigid handoffs between teams"
+   }
+  ]
+ },
+ {
+  "title": "2.8 End-to-End Lifecycle and Feedback",
+  "items": [
+   {
+    "t": "What is an end-to-end software delivery workflow?"
+   },
+   {
+    "t": "How requirements move through the software lifecycle"
+   },
+   {
+    "t": "Connecting requirements with development tasks"
+   },
+   {
+    "t": "Connecting development with testing"
+   },
+   {
+    "t": "Connecting testing with release decisions"
+   },
+   {
+    "t": "Connecting releases with deployment"
+   },
+   {
+    "t": "Connecting deployment with production monitoring"
+   },
+   {
+    "t": "How production incidents feed back into development"
+   },
+   {
+    "t": "How user feedback influences future releases"
+   },
+   {
+    "t": "What is a feedback loop?"
+   },
+   {
+    "t": "Why continuous feedback is important"
+   },
+   {
+    "t": "What are software delivery metrics?"
+   },
+   {
+    "t": "How to measure delivery speed and quality"
+   },
+   {
+    "t": "What is lead time?"
+   },
+   {
+    "t": "What is cycle time?"
+   },
+   {
+    "t": "What is change failure rate?"
+   },
+   {
+    "t": "What is mean time to recovery (MTTR)?"
+   },
+   {
+    "t": "How retrospectives improve the delivery process"
+   },
+   {
+    "t": "How to reduce unnecessary handoffs"
+   },
+   {
+    "t": "Mapping a requirement from idea to production"
+   },
+   {
+    "t": "End-to-end software lifecycle workflow example"
+   }
+  ]
+ }
+];
+
+// global sequential numbering — this n is what item.html?n= and content JSON "n" refer to
+let counter = 0;
+SECTIONS.forEach(sec => sec.items.forEach(it => { counter++; it.n = counter; }));
+const TOTAL = counter;
+
+let progress = deReadStore(ITEMS_KEY);
+let query = '';
+const NOTE_ICON = {info:'\u24D8', practice:'\u2605', warning:'\u26A0'};
+
+function render(){
+  const root = document.getElementById('sections');
+  root.innerHTML = '';
+  const q = query.trim().toLowerCase();
+  SECTIONS.forEach(sec=>{
+    const doneCount = sec.items.filter(it=>progress[it.n]).length;
+    const match = it => !q || it.t.toLowerCase().includes(q) || (it.tags||[]).some(tg=>tg.toLowerCase().includes(q));
+    const secEl = document.createElement('div');
+    secEl.className = 'section' + (sec.items.some(match) ? '' : ' hidden');
+    secEl.innerHTML = `<div class="section-head">
+        <span class="section-title">${sec.title}</span>
+        ${sec.important ? '<span class="star" title="Very important">&#9733;</span>' : ''}
+        ${sec.group ? `<span class="group-tag">${sec.group}</span>` : ''}
+        <span class="section-count">${doneCount}/${sec.items.length}</span></div>`;
+    if(sec.intro) secEl.innerHTML += `<div class="note note-${sec.intro.type}"><span>${NOTE_ICON[sec.intro.type]}</span><span>${sec.intro.text}</span></div>`;
+    const wrap = document.createElement('div'); wrap.className = 'items';
+    sec.items.forEach(it=>{
+      const isDone = !!progress[it.n];
+      const row = document.createElement('div');
+      row.className = 'item' + (isDone?' done':'') + (match(it)?'':' item-hidden');
+      row.innerHTML = `<span class="item-num">${it.n}</span>
+        <span class="check" data-n="${it.n}">${isDone?'\u2713':''}</span>
+        <span class="item-body">
+          <a class="item-text" href="../../item.html?topic=${CONTENT_SLUG}&n=${it.n}">${it.t}${it.optional?'<span class="opt-tag">optional</span>':''}<span class="item-arrow">&rarr;</span></a>
+          ${it.tags ? `<div class="item-tags">${it.tags.map(tg=>`<span class="item-tag">${tg}</span>`).join('')}</div>` : ''}
+        </span>`;
+      row.querySelector('.check').addEventListener('click', ()=>toggleItem(it.n));
+      wrap.appendChild(row);
+    });
+    secEl.appendChild(wrap);
+    if(sec.commands){
+      const box = document.createElement('div'); box.className = 'cmdbox';
+      box.innerHTML = `<div class="cmdbox-head"><span class="cmdbox-label">Commands</span><button class="copy-btn">Copy</button></div><pre>${sec.commands.join('\n')}</pre>`;
+      box.querySelector('.copy-btn').addEventListener('click', e=>{
+        navigator.clipboard.writeText(sec.commands.join('\n')).then(()=>{ e.target.textContent='Copied'; setTimeout(()=>e.target.textContent='Copy',1400); }).catch(()=>{});
+      });
+      secEl.appendChild(box);
+    }
+    if(sec.workflow){
+      const wf = document.createElement('div'); wf.className = 'workflow';
+      wf.innerHTML = sec.workflow.map((s,i)=>`<div class="wf-step"><span class="wf-dot"></span><span class="wf-text">${s}</span></div>${i<sec.workflow.length-1?'<div class="wf-line"></div>':''}`).join('');
+      secEl.appendChild(wf);
+    }
+    if(sec.note){
+      const n = document.createElement('div'); n.className = `note note-${sec.note.type}`;
+      n.innerHTML = `<span>${NOTE_ICON[sec.note.type]}</span><span>${sec.note.text}</span>`;
+      n.style.marginBottom = '18px'; secEl.appendChild(n);
+    } else secEl.style.paddingBottom = '2px';
+    root.appendChild(secEl);
+  });
+  updateRing();
+}
+function updateRing(){
+  const done = Object.keys(progress).filter(k=>progress[k]).length;
+  document.getElementById('progressNum').textContent = `${done}/${TOTAL}`;
+  deUpdateRing(document.getElementById('ringFill'), done, TOTAL);
+}
+function toggleItem(n){
+  if(progress[n]) delete progress[n]; else progress[n] = true;
+  deWriteStore(ITEMS_KEY, progress);
+  deSyncTopicToRoadmap(TOPIC_ID, TOTAL);
+  render();
+}
+document.getElementById('search').addEventListener('input', e=>{ query = e.target.value; render(); });
+// refresh when coming back from an item page
+window.addEventListener('focus', ()=>{ progress = deReadStore(ITEMS_KEY); render(); });
+window.addEventListener('pageshow', ()=>{ progress = deReadStore(ITEMS_KEY); render(); });
+render();
+</script>
+</body>
+</html>

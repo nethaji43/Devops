@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DevOps Roadmap</title><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/style.css"></head>
+<title>DevOps and AIOps Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .stage{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:56px 0 10px;padding-bottom:10px;border-bottom:1px solid var(--border);font:700 1.5rem var(--head)}
+  .stage .badge{font:500 12px var(--mono);color:var(--text-dim);background:var(--surface-2);border:1px solid var(--border);border-radius:20px;padding:2px 10px}
+  .info{margin:10px 0 0;border:1px solid var(--border);border-radius:10px;background:var(--surface)}
+  .info summary{cursor:pointer;padding:11px 16px;font-weight:600;color:var(--text-dim)}
+  .info .in{padding:2px 18px 16px}
+  .info h4{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin:18px 0 6px}
+  .info ul{margin:0;padding-left:20px}.info li{margin:4px 0}
+  .info .proj{border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:8px 0;background:var(--surface-2)}
+  .info .proj b{display:block;margin-bottom:4px}
+</style></head>
 <body><div class="wrap">
 <div class="hero">
   <small>DevOps · Self-Study Line Map</small>
-  <h1>Complete DevOps Roadmap</h1>
+  <h1 id="title">Complete DevOps Roadmap</h1>
   <p class="muted" id="intro"></p>
 </div>
-<div class="score"><b id="score">0/0</b><div class="bar"><i id="scorebar"></i></div><span id="scorepct" class="muted">0% complete</span></div>
+<div class="score"><b id="score">0/0</b><div class="bar"><i id="scorebar"></i></div><span id="scorepct" class="muted"></span></div>
 <div class="tools">
   <input id="search" type="search" placeholder="Search stops…" aria-label="Search stops">
   <button data-f="all" class="on">All</button><button data-f="remaining">Remaining</button><button data-f="completed">Completed</button>
@@ -18,38 +31,77 @@
 <script src="assets/common.js"></script>
 <script>
 const COLORS=["#2f81f7","#3fb950","#d29922","#f85149","#a371f7","#db61a2","#39c5cf","#f0883e","#7ee787","#ff7b72"];
-let road,data={},filter="all",term="";
+let road,data={},broken={},filter="all",term="";
+
+// per-topic progress, read fresh from localStorage every time we render
+const stat=t=>{
+  const d=data[t.id]; if(!d) return {d:null,n:0,k:0,done:false};
+  const store=deReadStore(deTopicItemsKey(t.order));
+  const n=Math.max((d.meta&&d.meta.total)||0,d.items.length),k=d.items.filter(i=>store[i.n]).length;
+  return {d,n,k,done:n>0&&k===n};
+};
+const ul=a=>`<ul>${a.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
+function stageDetails(cats){
+  const c=cats.find(x=>x.objective||x.exitCriteria||x.careerFocus||x.projects);
+  if(!c) return "";
+  let h=`<details class="info"><summary>Stage details · objective, exit criteria, career focus, projects</summary><div class="in">`;
+  if(c.objective) h+=`<h4>Objective</h4><p>${esc(c.objective)}</p>`;
+  if(c.exitCriteria) h+=`<h4>Exit criteria</h4>${ul(c.exitCriteria)}`;
+  if(c.careerFocus){
+    const f=c.careerFocus;
+    h+=`<h4>Career focus</h4>`+(f.roles?ul(f.roles):"")+(f.reality?`<p class="muted">${esc(f.reality)}</p>`:"")+(f.aiops?`<p>${esc(f.aiops)}</p>`:"");
+  }
+  if(c.projects) h+=`<h4>Projects</h4>`+c.projects.map(p=>
+    `<div class="proj"><b>${esc(p.title||p.name||"Project")}</b>`+
+    (p.description?`<p>${esc(p.description)}</p>`:"")+
+    (p.tasks?`<div class="muted">Tasks</div>${ul(p.tasks)}`:"")+
+    (p.deliverables?`<div class="muted">Deliverables</div>${ul(p.deliverables)}`:"")+`</div>`).join("");
+  return h+`</div></details>`;
+}
 function render(){
-  let total=0,doneStops=0,html="";
-  road.categories.forEach((c,ci)=>{
-    const stops=c.topics.map(t=>{
-      const d=data[t.id],n=d?d.items.length:0,k=d?Object.keys(deReadStore(deTopicItemsKey(t.order))).length:0;
-      return {t,d,n,k,done:n>0&&k===n};
+  let totalStops=0,doneStops=0,totalItems=0,doneItems=0,html="";
+  const colorOf=new Map(road.categories.map((c,i)=>[c,COLORS[i%COLORS.length]]));
+  [...new Set(road.categories.map(c=>c.stage||""))].forEach(st=>{
+    const cats=road.categories.filter(c=>(c.stage||"")===st);
+    let body="",stStops=0,stDone=0;
+    cats.forEach(c=>{
+      const stops=c.topics.map(t=>({t,...stat(t)}));
+      stops.forEach(s=>{totalStops++;stStops++;totalItems+=s.n;doneItems+=s.k;if(s.done){doneStops++;stDone++}});
+      const shown=stops.filter(s=>(filter==="all"||(filter==="completed"?s.done:!s.done))&&s.t.title.toLowerCase().includes(term));
+      if(!shown.length) return;
+      body+=`<section class="line" style="--c:${colorOf.get(c)}"><h2>${esc(c.name)}<span class="badge">${stops.filter(s=>s.done).length}/${stops.length}</span></h2><ul class="stops">`+
+        shown.map(s=>{
+          const inner=`<span>${s.t.order}. ${esc(s.t.title)}</span><span class="meta">${s.d?`${s.k}/${s.n} · ${pct(s.k,s.n)}% ›`:(broken[s.t.id]?"⚠ JSON error — see console (F12)":"Coming soon")}</span>`;
+          return `<li class="stop ${s.done?"done":""} ${s.d?"":"soon"}">`+(s.d?`<a class="row2" href="${s.t.page}">${inner}</a>`:`<div class="row2">${inner}</div>`)+`</li>`;
+        }).join("")+`</ul></section>`;
     });
-    total+=stops.length;doneStops+=stops.filter(s=>s.done).length;
-    const shown=stops.filter(s=>
-      (filter==="all"||(filter==="completed"?s.done:!s.done))&&s.t.title.toLowerCase().includes(term));
-    if(!shown.length)return;
-    html+=`<section class="line" style="--c:${COLORS[ci%COLORS.length]}"><h2>${esc(c.name)}<span class="badge">${stops.filter(s=>s.done).length}/${stops.length}</span></h2><ul class="stops">`+
-      shown.map(s=>{
-        const inner=`<span>${s.t.order}. ${esc(s.t.title)}</span><span class="meta">${s.d?`${s.k}/${s.n} · ${pct(s.k,s.n)}% ›`:"Coming soon"}</span>`;
-        return `<li class="stop ${s.done?"done":""} ${s.d?"":"soon"}">`+(s.d?`<a class="row2" href="${s.t.page}">${inner}</a>`:`<div class="row2">${inner}</div>`)+`</li>`;
-      }).join("")+`</ul></section>`;
+    if(body) html+=(st?`<h2 class="stage">${esc(st)}<span class="badge">${stDone}/${stStops} stops</span></h2>`:"")+stageDetails(cats)+body;
   });
   document.getElementById("map").innerHTML=html||`<p class="empty">No stops match that search.</p>`;
-  document.getElementById("score").textContent=`${doneStops}/${total}`;
-  document.getElementById("scorebar").style.width=pct(doneStops,total)+"%";
-  document.getElementById("scorepct").textContent=pct(doneStops,total)+"% complete";
-  document.getElementById("intro").textContent=`${total} stops across ${road.categories.length} lines. Click any stop with an arrow to open it and mark items learned — your progress is saved in this browser.`;
+  document.getElementById("score").textContent=`${doneStops}/${totalStops} stops`;
+  document.getElementById("scorebar").style.width=pct(doneItems,totalItems)+"%";
+  document.getElementById("scorepct").textContent=`${doneItems}/${totalItems} items learned · ${pct(doneItems,totalItems)}%`;
+  document.getElementById("intro").textContent=`${totalStops} stops across ${road.categories.length} lines. Click any stop with an arrow to open it and mark items learned — your progress is saved in this browser.`;
 }
 (async()=>{
   road=await getJSON("assets/roadmap.json");
-  await Promise.all(road.categories.flatMap(c=>c.topics).map(t=>getJSON(t.content).then(d=>data[t.id]=d).catch(()=>{})));
+  document.getElementById("title").textContent=road.title||"Complete DevOps Roadmap";
+  await Promise.all(road.categories.flatMap(c=>c.topics).map(async t=>{
+    try{
+      const r=await fetch(t.content);
+      if(!r.ok) return;                       // file not created yet -> "Coming soon"
+      try{data[t.id]=await r.json()}
+      catch(e){broken[t.id]=e.message;console.error("Invalid JSON in "+t.content+": "+e.message)}
+    }catch(e){}
+  }));
   render();
   document.getElementById("search").oninput=e=>{term=e.target.value.trim().toLowerCase();render()};
   document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{
     filter=b.dataset.f;
     document.querySelectorAll("[data-f]").forEach(x=>x.classList.toggle("on",x===b));render();});
   document.getElementById("reset").onclick=()=>{if(confirm("Reset all progress?")){try{Object.keys(localStorage).filter(k=>k.startsWith("devops_")).forEach(k=>localStorage.removeItem(k))}catch(e){}render()}};
+  // re-read progress when returning from a topic/item page (back button, tab focus)
+  window.addEventListener("pageshow",render);
+  window.addEventListener("focus",render);
 })().catch(()=>document.getElementById("map").innerHTML=`<p class="empty">Could not load assets/roadmap.json. Open this through a web server or GitHub Pages, not by double-clicking the file.</p>`);
 </script></body></html>

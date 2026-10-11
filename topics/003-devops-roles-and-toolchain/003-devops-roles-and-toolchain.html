@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DevOps Roles and Toolchain — DevOps Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  :root{ --ring-color:#39C5CF; --tc:#39C5CF; }
+  body{ background:radial-gradient(ellipse 900px 500px at 15% -10%, rgba(57,197,207,0.08), transparent), var(--bg); }
+  .hero{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
+  .section{margin-top:34px; border:1px solid var(--border); border-radius:14px; background:var(--surface); overflow:hidden;}
+  .section.hidden{display:none;}
+  .section-head{display:flex; align-items:center; gap:10px; padding:16px 20px; border-bottom:1px solid var(--border); flex-wrap:wrap;}
+  .section-title{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16.5px;}
+  .star{color:#E3B341; font-size:14px;}
+  .section-count{margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--text-faint); background:var(--surface-2); border:1px solid var(--border); border-radius:20px; padding:3px 10px;}
+  .group-tag{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#0D1117; background:var(--tc); border-radius:5px; padding:2px 7px; letter-spacing:.05em;}
+  .section .note, .section .cmdbox, .section .workflow{margin-left:20px; margin-right:20px;}
+  .items{padding:6px 8px 16px;}
+  .item{display:flex; align-items:flex-start; gap:12px; padding:9px 12px; border-radius:9px; transition:background .12s;}
+  .item:hover{background:var(--surface-2);}
+  .check{width:20px; height:20px; border-radius:6px; border:2px solid var(--border); flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--bg); cursor:pointer; transition:all .15s;}
+  .item.done .check{background:var(--tc); border-color:var(--tc);}
+  .item-num{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-faint); flex-shrink:0; width:26px; margin-top:2px;}
+  .item-body{flex:1; min-width:0;}
+  a.item-text{font-size:14.5px; color:var(--text); transition:color .15s;}
+  a.item-text:hover{color:var(--tc);}
+  .item.done .item-text{color:var(--text-dim);}
+  .item-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;}
+  .item-tag{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--text-faint); background:var(--surface-2); border:1px solid var(--border); border-radius:5px; padding:2px 7px;}
+  .opt-tag{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-faint); border:1px solid var(--border); border-radius:5px; padding:1px 6px; margin-left:6px;}
+  .item.item-hidden{display:none;}
+  .workflow{padding:18px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; margin-top:14px; margin-bottom:18px;}
+  .wf-step{display:flex; align-items:center; gap:12px;}
+  .wf-dot{width:10px; height:10px; border-radius:50%; background:var(--tc); flex-shrink:0;}
+  .wf-text{font-family:'JetBrains Mono',monospace; font-size:13px;}
+  .wf-line{width:2px; height:16px; background:var(--tc); opacity:.35; margin-left:4px;}
+</style>
+</head>
+<body>
+<div class="wrap narrow">
+  <a class="back" href="../../index.html">&larr; BACK TO ROADMAP</a>
+  <p class="crumb"><b>Foundations</b> &middot; Topic 3 of 150</p>
+  <div class="hero">
+    <div>
+      <h1>DevOps Roles and Toolchain</h1>
+      <p class="sub">Who does what in a DevOps team, how roles and teams collaborate, and how DevOps tools fit together into one toolchain. Click any item to open its notes, practice, and Q&amp;A.</p>
+    </div>
+    <div class="ring-wrap">
+      <svg class="ring" width="60" height="60" viewBox="0 0 64 64">
+        <circle class="ring-track" cx="32" cy="32" r="27"></circle>
+        <circle id="ringFill" class="ring-fill" cx="32" cy="32" r="27"></circle>
+      </svg>
+      <div><div class="ring-num" id="progressNum">0/175</div><div class="ring-label">LEARNED</div></div>
+    </div>
+  </div>
+  <input class="search" id="search" type="text" placeholder="Search within DevOps Roles and Toolchain — e.g. SRE, Jenkins, webhook..." style="margin-top:28px;" />
+  <div id="sections"></div>
+  <div class="footer"><span class="footer-note">PROGRESS SAVED IN THIS BROWSER &middot; SYNCS WITH THE MAIN ROADMAP</span></div>
+</div>
+<script src="../../assets/common.js"></script>
+<script>
+const TOPIC_ID = 3;                          // = topic number on the main roadmap
+const CONTENT_SLUG = '003-devops-roles-and-toolchain'; // = content/<slug>.json, used for item.html links
+const ITEMS_KEY = deTopicItemsKey(TOPIC_ID);
+
+const SECTIONS = [
+ {
+  "title": "3.1 Introduction to DevOps Roles and Toolchain",
+  "items": [
+   {
+    "t": "What are DevOps roles and responsibilities?"
+   },
+   {
+    "t": "Why organizations need different DevOps roles"
+   },
+   {
+    "t": "What is a DevOps toolchain?"
+   },
+   {
+    "t": "Why a DevOps toolchain is important"
+   },
+   {
+    "t": "How DevOps roles and tools work together"
+   },
+   {
+    "t": "Traditional IT roles vs. modern DevOps roles"
+   },
+   {
+    "t": "Understanding the end-to-end DevOps workflow"
+   },
+   {
+    "t": "How tools support the software delivery lifecycle"
+   },
+   {
+    "t": "Categories of DevOps tools"
+   },
+   {
+    "t": "Open-source vs. commercial DevOps tools"
+   },
+   {
+    "t": "Understanding tool integration"
+   },
+   {
+    "t": "Common DevOps role and toolchain terminology"
+   }
+  ],
+  "intro": {
+   "type": "info",
+   "text": "This topic is about role clarity, tool awareness and toolchain architecture. Detailed Git, Jenkins, Docker, Kubernetes, Terraform, Ansible, cloud, security and monitoring work comes in their own topics later."
+  }
+ },
+ {
+  "title": "3.2 Software Development and Operations Roles",
+  "items": [
+   {
+    "t": "What is a software developer's role?"
+   },
+   {
+    "t": "Responsibilities of a software developer"
+   },
+   {
+    "t": "What is an operations engineer?"
+   },
+   {
+    "t": "Responsibilities of an operations engineer"
+   },
+   {
+    "t": "What is a system administrator?"
+   },
+   {
+    "t": "What is a network engineer?"
+   },
+   {
+    "t": "What is a database administrator (DBA)?"
+   },
+   {
+    "t": "What is an application support engineer?"
+   },
+   {
+    "t": "What is a production support engineer?"
+   },
+   {
+    "t": "What is a release engineer?"
+   },
+   {
+    "t": "What is a build and release engineer?"
+   },
+   {
+    "t": "How development and operations teams collaborate"
+   },
+   {
+    "t": "Common responsibilities shared between teams"
+   },
+   {
+    "t": "Problems caused by isolated development and operations teams"
+   }
+  ]
+ },
+ {
+  "title": "3.3 DevOps Engineer Role",
+  "items": [
+   {
+    "t": "What is a DevOps engineer?"
+   },
+   {
+    "t": "Why the DevOps engineer role emerged"
+   },
+   {
+    "t": "Core responsibilities of a DevOps engineer"
+   },
+   {
+    "t": "DevOps engineer vs. software developer"
+   },
+   {
+    "t": "DevOps engineer vs. system administrator"
+   },
+   {
+    "t": "DevOps engineer vs. application support engineer"
+   },
+   {
+    "t": "DevOps engineer vs. cloud engineer"
+   },
+   {
+    "t": "DevOps engineer vs. site reliability engineer (SRE)"
+   },
+   {
+    "t": "DevOps engineer vs. platform engineer"
+   },
+   {
+    "t": "DevOps engineer vs. release engineer"
+   },
+   {
+    "t": "Daily activities of a DevOps engineer"
+   },
+   {
+    "t": "Responsibilities during development and testing"
+   },
+   {
+    "t": "Responsibilities during deployment and production"
+   },
+   {
+    "t": "Collaboration with developers, testers, and operations"
+   },
+   {
+    "t": "Common challenges faced by DevOps engineers"
+   },
+   {
+    "t": "What a DevOps engineer does not necessarily own"
+   }
+  ],
+  "important": true
+ },
+ {
+  "title": "3.4 Specialized DevOps Roles",
+  "items": [
+   {
+    "t": "What is a Continuous Integration and Continuous Delivery (CI/CD) engineer?"
+   },
+   {
+    "t": "What is a cloud engineer?"
+   },
+   {
+    "t": "What is a site reliability engineer (SRE)?"
+   },
+   {
+    "t": "What is a platform engineer?"
+   },
+   {
+    "t": "What is a DevSecOps engineer?"
+   },
+   {
+    "t": "What is a build and release engineer?"
+   },
+   {
+    "t": "What is an automation engineer?"
+   },
+   {
+    "t": "What is an infrastructure engineer?"
+   },
+   {
+    "t": "What is a security engineer?"
+   },
+   {
+    "t": "What is a monitoring and observability engineer?"
+   },
+   {
+    "t": "What is a FinOps engineer?"
+   },
+   {
+    "t": "What is an AIOps engineer?"
+   },
+   {
+    "t": "Differences between general DevOps and specialized roles"
+   },
+   {
+    "t": "How responsibilities overlap across specialized roles"
+   },
+   {
+    "t": "How organizations distribute DevOps responsibilities"
+   }
+  ]
+ },
+ {
+  "title": "3.5 DevOps Team Structure and Collaboration",
+  "items": [
+   {
+    "t": "What is a cross-functional team?"
+   },
+   {
+    "t": "What is a DevOps team?"
+   },
+   {
+    "t": "Centralized DevOps team structure"
+   },
+   {
+    "t": "Embedded DevOps team structure"
+   },
+   {
+    "t": "Shared services model"
+   },
+   {
+    "t": "Platform team model"
+   },
+   {
+    "t": "What is a product-oriented team?"
+   },
+   {
+    "t": "How developers and operations collaborate"
+   },
+   {
+    "t": "How QA and testing teams collaborate with DevOps"
+   },
+   {
+    "t": "How security teams collaborate with DevOps"
+   },
+   {
+    "t": "What is shared ownership?"
+   },
+   {
+    "t": "What is the You Build It, You Run It principle?"
+   },
+   {
+    "t": "What are handoffs between teams?"
+   },
+   {
+    "t": "How communication gaps affect software delivery"
+   },
+   {
+    "t": "Responsibilities during incidents and releases"
+   },
+   {
+    "t": "How to improve collaboration across teams"
+   }
+  ]
+ },
+ {
+  "title": "3.6 DevOps Toolchain Categories",
+  "items": [
+   {
+    "t": "What are DevOps tool categories?"
+   },
+   {
+    "t": "Source code management tools"
+   },
+   {
+    "t": "Code collaboration and review tools"
+   },
+   {
+    "t": "Build automation tools"
+   },
+   {
+    "t": "Continuous integration tools"
+   },
+   {
+    "t": "Continuous delivery and deployment tools"
+   },
+   {
+    "t": "Configuration management tools"
+   },
+   {
+    "t": "Infrastructure provisioning tools"
+   },
+   {
+    "t": "Containerization tools"
+   },
+   {
+    "t": "Container orchestration tools"
+   },
+   {
+    "t": "Artifact and package management tools"
+   },
+   {
+    "t": "Testing automation tools"
+   },
+   {
+    "t": "Security scanning tools"
+   },
+   {
+    "t": "Monitoring and observability tools"
+   },
+   {
+    "t": "Logging and alerting tools"
+   },
+   {
+    "t": "Collaboration and communication tools"
+   },
+   {
+    "t": "Incident management tools"
+   },
+   {
+    "t": "Cloud platforms in a DevOps toolchain"
+   },
+   {
+    "t": "How tools map to different lifecycle stages"
+   },
+   {
+    "t": "Why a tool's category matters more than its popularity"
+   }
+  ],
+  "important": true
+ },
+ {
+  "title": "3.7 Overview of Popular DevOps Tools",
+  "items": [
+   {
+    "t": "What is Git?"
+   },
+   {
+    "t": "Overview of GitHub, GitLab, and Bitbucket"
+   },
+   {
+    "t": "What is Jenkins?"
+   },
+   {
+    "t": "Overview of GitHub Actions and GitLab CI/CD"
+   },
+   {
+    "t": "What is Maven?"
+   },
+   {
+    "t": "What is Gradle?"
+   },
+   {
+    "t": "What is Docker?"
+   },
+   {
+    "t": "What is Kubernetes?"
+   },
+   {
+    "t": "What is Ansible?"
+   },
+   {
+    "t": "What is Terraform?"
+   },
+   {
+    "t": "What is SonarQube?"
+   },
+   {
+    "t": "What is Nexus Repository?"
+   },
+   {
+    "t": "What is JFrog Artifactory?"
+   },
+   {
+    "t": "What are Prometheus and Grafana?"
+   },
+   {
+    "t": "What are the ELK Stack and OpenSearch?"
+   },
+   {
+    "t": "Overview of AWS, Microsoft Azure, and Google Cloud"
+   },
+   {
+    "t": "What are Jira and Confluence?"
+   },
+   {
+    "t": "What are Slack and Microsoft Teams?"
+   },
+   {
+    "t": "Why organizations choose different tools"
+   },
+   {
+    "t": "Tool overview vs. hands-on implementation"
+   }
+  ],
+  "note": {
+   "type": "info",
+   "text": "Learn only what each tool is for and where it fits. Hands-on use comes in the dedicated topics."
+  }
+ },
+ {
+  "title": "3.8 Understanding Toolchain Integration",
+  "items": [
+   {
+    "t": "What is toolchain integration?"
+   },
+   {
+    "t": "Why DevOps tools must communicate"
+   },
+   {
+    "t": "How source code changes trigger automated workflows"
+   },
+   {
+    "t": "How code moves from a repository to a build"
+   },
+   {
+    "t": "How build artifacts move between tools"
+   },
+   {
+    "t": "How automated testing fits into a toolchain"
+   },
+   {
+    "t": "How deployment tools use build artifacts"
+   },
+   {
+    "t": "How monitoring tools provide production feedback"
+   },
+   {
+    "t": "How notifications connect teams and tools"
+   },
+   {
+    "t": "What is a webhook?"
+   },
+   {
+    "t": "What is an API in tool integration?"
+   },
+   {
+    "t": "What is a toolchain dependency?"
+   },
+   {
+    "t": "Common tool integration failures"
+   },
+   {
+    "t": "Risks of disconnected tools"
+   },
+   {
+    "t": "Understanding a toolchain workflow diagram"
+   }
+  ],
+  "important": true
+ },
+ {
+  "title": "3.9 Selecting the Right DevOps Tools",
+  "items": [
+   {
+    "t": "Why tool selection matters"
+   },
+   {
+    "t": "Understanding organizational requirements"
+   },
+   {
+    "t": "Open-source vs. commercial tools"
+   },
+   {
+    "t": "Self-hosted vs. cloud-hosted tools"
+   },
+   {
+    "t": "Ease of use and learning curve"
+   },
+   {
+    "t": "Integration and compatibility"
+   },
+   {
+    "t": "Scalability and performance"
+   },
+   {
+    "t": "Security and access control"
+   },
+   {
+    "t": "Licensing and operating costs"
+   },
+   {
+    "t": "Community support and documentation"
+   },
+   {
+    "t": "Vendor lock-in"
+   },
+   {
+    "t": "Choosing tools based on existing infrastructure"
+   },
+   {
+    "t": "Avoiding unnecessary tools and complexity"
+   },
+   {
+    "t": "Standardizing tools across teams"
+   },
+   {
+    "t": "Evaluating a tool before adopting it"
+   }
+  ]
+ }
+];
+
+// global sequential numbering — this n is what item.html?n= and content JSON "n" refer to
+let counter = 0;
+SECTIONS.forEach(sec => sec.items.forEach(it => { counter++; it.n = counter; }));
+const TOTAL = counter;
+
+let progress = deReadStore(ITEMS_KEY);
+let query = '';
+const NOTE_ICON = {info:'\u24D8', practice:'\u2605', warning:'\u26A0'};
+
+function render(){
+  const root = document.getElementById('sections');
+  root.innerHTML = '';
+  const q = query.trim().toLowerCase();
+  SECTIONS.forEach(sec=>{
+    const doneCount = sec.items.filter(it=>progress[it.n]).length;
+    const match = it => !q || it.t.toLowerCase().includes(q) || (it.tags||[]).some(tg=>tg.toLowerCase().includes(q));
+    const secEl = document.createElement('div');
+    secEl.className = 'section' + (sec.items.some(match) ? '' : ' hidden');
+    secEl.innerHTML = `<div class="section-head">
+        <span class="section-title">${sec.title}</span>
+        ${sec.important ? '<span class="star" title="Very important">&#9733;</span>' : ''}
+        ${sec.group ? `<span class="group-tag">${sec.group}</span>` : ''}
+        <span class="section-count">${doneCount}/${sec.items.length}</span></div>`;
+    if(sec.intro) secEl.innerHTML += `<div class="note note-${sec.intro.type}"><span>${NOTE_ICON[sec.intro.type]}</span><span>${sec.intro.text}</span></div>`;
+    const wrap = document.createElement('div'); wrap.className = 'items';
+    sec.items.forEach(it=>{
+      const isDone = !!progress[it.n];
+      const row = document.createElement('div');
+      row.className = 'item' + (isDone?' done':'') + (match(it)?'':' item-hidden');
+      row.innerHTML = `<span class="item-num">${it.n}</span>
+        <span class="check" data-n="${it.n}">${isDone?'\u2713':''}</span>
+        <span class="item-body">
+          <a class="item-text" href="../../item.html?topic=${CONTENT_SLUG}&n=${it.n}">${it.t}${it.optional?'<span class="opt-tag">optional</span>':''}<span class="item-arrow">&rarr;</span></a>
+          ${it.tags ? `<div class="item-tags">${it.tags.map(tg=>`<span class="item-tag">${tg}</span>`).join('')}</div>` : ''}
+        </span>`;
+      row.querySelector('.check').addEventListener('click', ()=>toggleItem(it.n));
+      wrap.appendChild(row);
+    });
+    secEl.appendChild(wrap);
+    if(sec.commands){
+      const box = document.createElement('div'); box.className = 'cmdbox';
+      box.innerHTML = `<div class="cmdbox-head"><span class="cmdbox-label">Commands</span><button class="copy-btn">Copy</button></div><pre>${sec.commands.join('\n')}</pre>`;
+      box.querySelector('.copy-btn').addEventListener('click', e=>{
+        navigator.clipboard.writeText(sec.commands.join('\n')).then(()=>{ e.target.textContent='Copied'; setTimeout(()=>e.target.textContent='Copy',1400); }).catch(()=>{});
+      });
+      secEl.appendChild(box);
+    }
+    if(sec.workflow){
+      const wf = document.createElement('div'); wf.className = 'workflow';
+      wf.innerHTML = sec.workflow.map((s,i)=>`<div class="wf-step"><span class="wf-dot"></span><span class="wf-text">${s}</span></div>${i<sec.workflow.length-1?'<div class="wf-line"></div>':''}`).join('');
+      secEl.appendChild(wf);
+    }
+    if(sec.note){
+      const n = document.createElement('div'); n.className = `note note-${sec.note.type}`;
+      n.innerHTML = `<span>${NOTE_ICON[sec.note.type]}</span><span>${sec.note.text}</span>`;
+      n.style.marginBottom = '18px'; secEl.appendChild(n);
+    } else secEl.style.paddingBottom = '2px';
+    root.appendChild(secEl);
+  });
+  updateRing();
+}
+function updateRing(){
+  const done = Object.keys(progress).filter(k=>progress[k]).length;
+  document.getElementById('progressNum').textContent = `${done}/${TOTAL}`;
+  deUpdateRing(document.getElementById('ringFill'), done, TOTAL);
+}
+function toggleItem(n){
+  if(progress[n]) delete progress[n]; else progress[n] = true;
+  deWriteStore(ITEMS_KEY, progress);
+  deSyncTopicToRoadmap(TOPIC_ID, TOTAL);
+  render();
+}
+document.getElementById('search').addEventListener('input', e=>{ query = e.target.value; render(); });
+// refresh when coming back from an item page
+window.addEventListener('focus', ()=>{ progress = deReadStore(ITEMS_KEY); render(); });
+window.addEventListener('pageshow', ()=>{ progress = deReadStore(ITEMS_KEY); render(); });
+render();
+</script>
+</body>
+</html>
