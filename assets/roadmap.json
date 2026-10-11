@@ -1,0 +1,1399 @@
+{
+  "title": "DevOps and AIOps Complete Roadmap",
+  "storageKey": "devops-progress",
+  "categories": [
+    {
+      "name": "DevOps Foundations",
+      "stage": "Fundamentals",
+      "topics": [
+        {
+          "order": 1,
+          "id": "001-devops-fundamentals",
+          "title": "DevOps Fundamentals",
+          "content": "content/001-devops-fundamentals.json",
+          "page": "topics/001-devops-fundamentals/001-devops-fundamentals.html"
+        },
+        {
+          "order": 2,
+          "id": "002-software-delivery-lifecycle",
+          "title": "Software Delivery Lifecycle",
+          "content": "content/002-software-delivery-lifecycle.json",
+          "page": "topics/002-software-delivery-lifecycle/002-software-delivery-lifecycle.html"
+        },
+        {
+          "order": 3,
+          "id": "003-devops-roles-and-toolchain",
+          "title": "DevOps Roles and Toolchain",
+          "content": "content/003-devops-roles-and-toolchain.json",
+          "page": "topics/003-devops-roles-and-toolchain/003-devops-roles-and-toolchain.html"
+        }
+      ],
+      "careerFocus": {
+        "roles": [
+          "Junior DevOps Engineer (where entry-level experience is accepted)",
+          "Cloud Support Engineer",
+          "DevOps Support Engineer",
+          "Linux / Infrastructure Support Engineer",
+          "Build and Release Support Engineer"
+        ],
+        "reality": "These are targets, not guarantees. Apply when you can demonstrate the required skills and explain your projects. Application-support experience is relevant but is not automatically DevOps engineering experience."
+      },
+      "projects": [
+        {
+          "title": "Project F1 — Linux Operations Toolkit",
+          "tasks": [
+            "Create a Linux VM or safe lab environment.",
+            "Write Bash scripts to check disk, memory, processes and service status.",
+            "Log results and use useful exit codes.",
+            "Document usage and troubleshooting."
+          ],
+          "deliverables": [
+            "Scripts in GitHub",
+            "README and sample output",
+            "Troubleshooting notes"
+          ]
+        },
+        {
+          "title": "Project F2 — Containerised Application + CI",
+          "tasks": [
+            "Choose a small Python, Node.js or static web application.",
+            "Store source in GitHub and use a basic branch workflow.",
+            "Create a Dockerfile and run the application.",
+            "Use GitHub Actions to run checks and build the image."
+          ],
+          "deliverables": [
+            "Application source",
+            "Dockerfile",
+            "CI workflow",
+            "README and architecture diagram"
+          ]
+        },
+        {
+          "title": "Project F3 — First AWS Deployment",
+          "tasks": [
+            "Deploy a small application to EC2 or another suitable low-cost AWS service.",
+            "Configure IAM access and network rules.",
+            "Configure the app to start reliably and inspect logs.",
+            "Add basic health monitoring and cleanup instructions."
+          ],
+          "deliverables": [
+            "Deployment guide",
+            "Infrastructure diagram",
+            "Security checklist",
+            "Cost and cleanup notes"
+          ]
+        }
+      ],
+      "objective": "Understand the systems, tools and workflows DevOps engineers use daily. Learn each topic to a practical working level, practise, then move forward without trying to master advanced details immediately.",
+      "exitCriteria": [
+        "Use Linux to inspect processes, services, permissions, disk and logs.",
+        "Explain IP addresses, DNS, ports, HTTP/HTTPS, SSH and basic firewall behaviour.",
+        "Use Git branches, commits, merges and pull requests.",
+        "Write small Bash scripts and basic Python automation.",
+        "Build and run a Dockerised application.",
+        "Create a basic CI/CD pipeline and explain each stage.",
+        "Deploy a simple application to AWS with sensible access and network controls.",
+        "Explain monitoring, secrets handling and basic incident troubleshooting."
+      ]
+    },
+    {
+      "name": "Linux & Operating Systems",
+      "stage": "Fundamentals",
+      "topics": [
+        {
+          "order": 4,
+          "id": "004-linux-fundamentals",
+          "title": "Linux Fundamentals",
+          "content": "content/004-linux-fundamentals.json",
+          "page": "topics/004-linux-fundamentals/004-linux-fundamentals.html"
+        },
+        {
+          "order": 5,
+          "id": "005-linux-files-and-directories",
+          "title": "Linux Files and Directories",
+          "content": "content/005-linux-files-and-directories.json",
+          "page": "topics/005-linux-files-and-directories/005-linux-files-and-directories.html"
+        },
+        {
+          "order": 6,
+          "id": "006-linux-commands-and-text-processing",
+          "title": "Linux Commands and Text Processing",
+          "content": "content/006-linux-commands-and-text-processing.json",
+          "page": "topics/006-linux-commands-and-text-processing/006-linux-commands-and-text-processing.html"
+        },
+        {
+          "order": 7,
+          "id": "007-linux-users-and-permissions",
+          "title": "Linux Users and Permissions",
+          "content": "content/007-linux-users-and-permissions.json",
+          "page": "topics/007-linux-users-and-permissions/007-linux-users-and-permissions.html"
+        },
+        {
+          "order": 8,
+          "id": "008-linux-processes-and-services",
+          "title": "Linux Processes and Services",
+          "content": "content/008-linux-processes-and-services.json",
+          "page": "topics/008-linux-processes-and-services/008-linux-processes-and-services.html"
+        },
+        {
+          "order": 9,
+          "id": "009-linux-packages-logs-and-storage",
+          "title": "Linux Packages, Logs and Storage",
+          "content": "content/009-linux-packages-logs-and-storage.json",
+          "page": "topics/009-linux-packages-logs-and-storage/009-linux-packages-logs-and-storage.html"
+        }
+      ]
+    },
+    {
+      "name": "Networking Fundamentals",
+      "stage": "Fundamentals",
+      "topics": [
+        {
+          "order": 10,
+          "id": "010-networking-fundamentals",
+          "title": "Networking Fundamentals",
+          "content": "content/010-networking-fundamentals.json",
+          "page": "topics/010-networking-fundamentals/010-networking-fundamentals.html"
+        },
+        {
+          "order": 11,
+          "id": "011-dns-http-and-https",
+          "title": "DNS, HTTP and HTTPS",
+          "content": "content/011-dns-http-and-https.json",
+          "page": "topics/011-dns-http-and-https/011-dns-http-and-https.html"
+        },
+        {
+          "order": 12,
+          "id": "012-ssh-and-secure-remote-access",
+          "title": "SSH and Secure Remote Access",
+          "content": "content/012-ssh-and-secure-remote-access.json",
+          "page": "topics/012-ssh-and-secure-remote-access/012-ssh-and-secure-remote-access.html"
+        },
+        {
+          "order": 13,
+          "id": "013-firewalls-and-connectivity-checks",
+          "title": "Firewalls and Connectivity Checks",
+          "content": "content/013-firewalls-and-connectivity-checks.json",
+          "page": "topics/013-firewalls-and-connectivity-checks/013-firewalls-and-connectivity-checks.html"
+        }
+      ]
+    },
+    {
+      "name": "Git & Collaboration",
+      "stage": "Fundamentals",
+      "topics": [
+        {
+          "order": 14,
+          "id": "014-git-fundamentals",
+          "title": "Git Fundamentals",
+          "content": "content/014-git-fundamentals.json",
+          "page": "topics/014-git-fundamentals/014-git-fundamentals.html"
+        },
+        {
+          "order": 15,
+          "id": "015-git-branching-and-collaboration",
+          "title": "Git Branching and Collaboration",
+          "content": "content/015-git-branching-and-collaboration.json",
+          "page": "topics/015-git-branching-and-collaboration/015-git-branching-and-collaboration.html"
+        },
+        {
+          "order": 16,
+          "id": "016-github-or-gitlab-fundamentals",
+          "title": "GitHub or GitLab Fundamentals",
+          "content": "content/016-github-or-gitlab-fundamentals.json",
+          "page": "topics/016-github-or-gitlab-fundamentals/016-github-or-gitlab-fundamentals.html"
+        }
+      ]
+    },
+    {
+      "name": "Scripting & Configuration Basics",
+      "stage": "Fundamentals",
+      "topics": [
+        {
+          "order": 17,
+          "id": "017-bash-fundamentals",
+          "title": "Bash Fundamentals",
+          "content": "content/017-bash-fundamentals.json",
+          "page": "topics/017-bash-fundamentals/017-bash-fundamentals.html"
+        },
+        {
+          "order": 18,
+          "id": "018-bash-automation-and-scheduling",
+          "title": "Bash Automation and Scheduling",
+          "content": "content/018-bash-automation-and-scheduling.json",
+          "page": "topics/018-bash-automation-and-scheduling/018-bash-automation-and-scheduling.html"
+        },
+        {
+          "order": 19,
+          "id": "019-python-for-devops",
+          "title": "Python for DevOps",
+          "content": "content/019-python-for-devops.json",
+          "page": "topics/019-python-for-devops/019-python-for-devops.html"
+        },
+        {
+          "order": 20,
+          "id": "020-yaml-and-json",
+          "title": "YAML and JSON",
+          "content": "content/020-yaml-and-json.json",
+          "page": "topics/020-yaml-and-json/020-yaml-and-json.html"
+        },
+        {
+          "order": 21,
+          "id": "021-environment-variables-and-configuration",
+          "title": "Environment Variables and Configuration",
+          "content": "content/021-environment-variables-and-configuration.json",
+          "page": "topics/021-environment-variables-and-configuration/021-environment-variables-and-configuration.html"
+        }
+      ]
+    },
+    {
+      "name": "Web, Cloud & AWS Fundamentals",
+      "stage": "Fundamentals",
+      "topics": [
+        {
+          "order": 22,
+          "id": "022-web-servers-and-reverse-proxies",
+          "title": "Web Servers and Reverse Proxies",
+          "content": "content/022-web-servers-and-reverse-proxies.json",
+          "page": "topics/022-web-servers-and-reverse-proxies/022-web-servers-and-reverse-proxies.html"
+        },
+        {
+          "order": 23,
+          "id": "023-cloud-computing-fundamentals",
+          "title": "Cloud Computing Fundamentals",
+          "content": "content/023-cloud-computing-fundamentals.json",
+          "page": "topics/023-cloud-computing-fundamentals/023-cloud-computing-fundamentals.html"
+        },
+        {
+          "order": 24,
+          "id": "024-aws-fundamentals",
+          "title": "AWS Fundamentals",
+          "content": "content/024-aws-fundamentals.json",
+          "page": "topics/024-aws-fundamentals/024-aws-fundamentals.html"
+        },
+        {
+          "order": 25,
+          "id": "025-aws-iam-basics",
+          "title": "AWS IAM Basics",
+          "content": "content/025-aws-iam-basics.json",
+          "page": "topics/025-aws-iam-basics/025-aws-iam-basics.html"
+        },
+        {
+          "order": 26,
+          "id": "026-aws-networking-basics",
+          "title": "AWS Networking Basics",
+          "content": "content/026-aws-networking-basics.json",
+          "page": "topics/026-aws-networking-basics/026-aws-networking-basics.html"
+        },
+        {
+          "order": 27,
+          "id": "027-aws-compute-and-storage-basics",
+          "title": "AWS Compute and Storage Basics",
+          "content": "content/027-aws-compute-and-storage-basics.json",
+          "page": "topics/027-aws-compute-and-storage-basics/027-aws-compute-and-storage-basics.html"
+        }
+      ]
+    },
+    {
+      "name": "Containers & Docker",
+      "stage": "Fundamentals",
+      "topics": [
+        {
+          "order": 28,
+          "id": "028-docker-fundamentals",
+          "title": "Docker Fundamentals",
+          "content": "content/028-docker-fundamentals.json",
+          "page": "topics/028-docker-fundamentals/028-docker-fundamentals.html"
+        },
+        {
+          "order": 29,
+          "id": "029-docker-build-and-run",
+          "title": "Docker Build and Run",
+          "content": "content/029-docker-build-and-run.json",
+          "page": "topics/029-docker-build-and-run/029-docker-build-and-run.html"
+        },
+        {
+          "order": 30,
+          "id": "030-dockerfile-essentials",
+          "title": "Dockerfile Essentials",
+          "content": "content/030-dockerfile-essentials.json",
+          "page": "topics/030-dockerfile-essentials/030-dockerfile-essentials.html"
+        },
+        {
+          "order": 31,
+          "id": "031-docker-networking-and-volumes",
+          "title": "Docker Networking and Volumes",
+          "content": "content/031-docker-networking-and-volumes.json",
+          "page": "topics/031-docker-networking-and-volumes/031-docker-networking-and-volumes.html"
+        },
+        {
+          "order": 32,
+          "id": "032-docker-compose-fundamentals",
+          "title": "Docker Compose Fundamentals",
+          "content": "content/032-docker-compose-fundamentals.json",
+          "page": "topics/032-docker-compose-fundamentals/032-docker-compose-fundamentals.html"
+        }
+      ]
+    },
+    {
+      "name": "CI/CD & First Deployment",
+      "stage": "Fundamentals",
+      "topics": [
+        {
+          "order": 33,
+          "id": "033-ci-cd-fundamentals",
+          "title": "CI/CD Fundamentals",
+          "content": "content/033-ci-cd-fundamentals.json",
+          "page": "topics/033-ci-cd-fundamentals/033-ci-cd-fundamentals.html"
+        },
+        {
+          "order": 34,
+          "id": "034-github-actions-or-jenkins-basics",
+          "title": "GitHub Actions or Jenkins Basics",
+          "content": "content/034-github-actions-or-jenkins-basics.json",
+          "page": "topics/034-github-actions-or-jenkins-basics/034-github-actions-or-jenkins-basics.html"
+        },
+        {
+          "order": 35,
+          "id": "035-build-test-and-publish",
+          "title": "Build, Test and Publish",
+          "content": "content/035-build-test-and-publish.json",
+          "page": "topics/035-build-test-and-publish/035-build-test-and-publish.html"
+        },
+        {
+          "order": 36,
+          "id": "036-aws-application-deployment-basics",
+          "title": "AWS Application Deployment Basics",
+          "content": "content/036-aws-application-deployment-basics.json",
+          "page": "topics/036-aws-application-deployment-basics/036-aws-application-deployment-basics.html"
+        }
+      ]
+    },
+    {
+      "name": "Monitoring, Troubleshooting & Security Basics",
+      "stage": "Fundamentals",
+      "topics": [
+        {
+          "order": 37,
+          "id": "037-monitoring-fundamentals",
+          "title": "Monitoring Fundamentals",
+          "content": "content/037-monitoring-fundamentals.json",
+          "page": "topics/037-monitoring-fundamentals/037-monitoring-fundamentals.html"
+        },
+        {
+          "order": 38,
+          "id": "038-basic-application-and-system-troubleshooting",
+          "title": "Basic Application and System Troubleshooting",
+          "content": "content/038-basic-application-and-system-troubleshooting.json",
+          "page": "topics/038-basic-application-and-system-troubleshooting/038-basic-application-and-system-troubleshooting.html"
+        },
+        {
+          "order": 39,
+          "id": "039-security-fundamentals-for-devops",
+          "title": "Security Fundamentals for DevOps",
+          "content": "content/039-security-fundamentals-for-devops.json",
+          "page": "topics/039-security-fundamentals-for-devops/039-security-fundamentals-for-devops.html"
+        },
+        {
+          "order": 40,
+          "id": "040-fundamentals-review-and-documentation",
+          "title": "Fundamentals Review and Documentation",
+          "content": "content/040-fundamentals-review-and-documentation.json",
+          "page": "topics/040-fundamentals-review-and-documentation/040-fundamentals-review-and-documentation.html"
+        }
+      ]
+    },
+    {
+      "name": "Linux Troubleshooting & Automation",
+      "stage": "Intermediate",
+      "topics": [
+        {
+          "order": 41,
+          "id": "041-advanced-linux-troubleshooting",
+          "title": "Advanced Linux Troubleshooting",
+          "content": "content/041-advanced-linux-troubleshooting.json",
+          "page": "topics/041-advanced-linux-troubleshooting/041-advanced-linux-troubleshooting.html"
+        },
+        {
+          "order": 42,
+          "id": "042-linux-networking-troubleshooting",
+          "title": "Linux Networking Troubleshooting",
+          "content": "content/042-linux-networking-troubleshooting.json",
+          "page": "topics/042-linux-networking-troubleshooting/042-linux-networking-troubleshooting.html"
+        },
+        {
+          "order": 43,
+          "id": "043-bash-error-handling-and-robust-scripts",
+          "title": "Bash Error Handling and Robust Scripts",
+          "content": "content/043-bash-error-handling-and-robust-scripts.json",
+          "page": "topics/043-bash-error-handling-and-robust-scripts/043-bash-error-handling-and-robust-scripts.html"
+        },
+        {
+          "order": 44,
+          "id": "044-python-automation-for-apis",
+          "title": "Python Automation for APIs",
+          "content": "content/044-python-automation-for-apis.json",
+          "page": "topics/044-python-automation-for-apis/044-python-automation-for-apis.html"
+        }
+      ],
+      "careerFocus": {
+        "roles": [
+          "DevOps Engineer",
+          "Cloud Engineer",
+          "CI/CD Engineer",
+          "Infrastructure Automation Engineer",
+          "Junior Platform Engineer",
+          "Cloud Operations Engineer"
+        ],
+        "reality": "Target roles whose experience requirements match your profile. Be ready to demonstrate hands-on ownership of pipelines, infrastructure and deployments. Kubernetes/cloud specialist roles may need deeper experience."
+      },
+      "projects": [
+        {
+          "title": "Project I1 — End-to-End CI/CD Delivery",
+          "tasks": [
+            "Build a pipeline with checkout, tests, build, image scan and publishing.",
+            "Deploy to a test environment after successful checks.",
+            "Separate configuration from code and protect secrets.",
+            "Add deployment verification and rollback."
+          ],
+          "deliverables": [
+            "Pipeline definition",
+            "Container image",
+            "Deployment diagram",
+            "Failure and rollback demonstration"
+          ]
+        },
+        {
+          "title": "Project I2 — AWS Infrastructure as Code",
+          "tasks": [
+            "Use Terraform to create a small, secured AWS environment.",
+            "Use variables, outputs, modules and remote state concepts.",
+            "Use Ansible or cloud-init for repeatable configuration.",
+            "Demonstrate plan, apply, change review and cleanup."
+          ],
+          "deliverables": [
+            "Terraform repository",
+            "Infrastructure diagram",
+            "State/security explanation",
+            "Cost and cleanup guide"
+          ]
+        },
+        {
+          "title": "Project I3 — Kubernetes Deployment and Observability",
+          "tasks": [
+            "Deploy a containerised app to local Kubernetes or a cost-controlled managed cluster.",
+            "Configure Deployments, Services, probes, ConfigMaps and Secrets appropriately.",
+            "Create Prometheus/Grafana dashboards or equivalent monitoring.",
+            "Cause a test failure and document diagnosis and recovery."
+          ],
+          "deliverables": [
+            "Kubernetes manifests or Helm chart",
+            "Dashboard configuration",
+            "Troubleshooting runbook",
+            "Recovery demonstration"
+          ]
+        }
+      ],
+      "objective": "Connect tools into repeatable workflows. Automate infrastructure and deployments, operate container workloads, add observability and troubleshoot realistic failures.",
+      "exitCriteria": [
+        "Build CI/CD with tests, image publishing, deployment and rollback.",
+        "Provision AWS infrastructure using Terraform and understand remote state.",
+        "Automate host configuration with Ansible.",
+        "Deploy with Docker Compose and understand Kubernetes basics.",
+        "Deploy workloads to Kubernetes using Deployments, Services and configuration.",
+        "Create metrics, dashboards and alerts.",
+        "Use secret management and vulnerability scanning in a delivery workflow.",
+        "Troubleshoot build, deployment, connectivity, permission and runtime failures."
+      ]
+    },
+    {
+      "name": "Git, Containers & Delivery Workflows",
+      "stage": "Intermediate",
+      "topics": [
+        {
+          "order": 45,
+          "id": "045-git-workflows-and-release-tags",
+          "title": "Git Workflows and Release Tags",
+          "content": "content/045-git-workflows-and-release-tags.json",
+          "page": "topics/045-git-workflows-and-release-tags/045-git-workflows-and-release-tags.html"
+        },
+        {
+          "order": 46,
+          "id": "046-container-image-optimisation",
+          "title": "Container Image Optimisation",
+          "content": "content/046-container-image-optimisation.json",
+          "page": "topics/046-container-image-optimisation/046-container-image-optimisation.html"
+        },
+        {
+          "order": 47,
+          "id": "047-docker-compose-for-development-environments",
+          "title": "Docker Compose for Development Environments",
+          "content": "content/047-docker-compose-for-development-environments.json",
+          "page": "topics/047-docker-compose-for-development-environments/047-docker-compose-for-development-environments.html"
+        },
+        {
+          "order": 48,
+          "id": "048-container-registry-workflow",
+          "title": "Container Registry Workflow",
+          "content": "content/048-container-registry-workflow.json",
+          "page": "topics/048-container-registry-workflow/048-container-registry-workflow.html"
+        }
+      ]
+    },
+    {
+      "name": "CI/CD Pipelines & Secure Delivery",
+      "stage": "Intermediate",
+      "topics": [
+        {
+          "order": 49,
+          "id": "049-ci-cd-pipeline-design",
+          "title": "CI/CD Pipeline Design",
+          "content": "content/049-ci-cd-pipeline-design.json",
+          "page": "topics/049-ci-cd-pipeline-design/049-ci-cd-pipeline-design.html"
+        },
+        {
+          "order": 50,
+          "id": "050-jenkins-pipelines",
+          "title": "Jenkins Pipelines",
+          "content": "content/050-jenkins-pipelines.json",
+          "page": "topics/050-jenkins-pipelines/050-jenkins-pipelines.html"
+        },
+        {
+          "order": 51,
+          "id": "051-github-actions-workflows",
+          "title": "GitHub Actions Workflows",
+          "content": "content/051-github-actions-workflows.json",
+          "page": "topics/051-github-actions-workflows/051-github-actions-workflows.html"
+        },
+        {
+          "order": 52,
+          "id": "052-pipeline-testing-and-quality-gates",
+          "title": "Pipeline Testing and Quality Gates",
+          "content": "content/052-pipeline-testing-and-quality-gates.json",
+          "page": "topics/052-pipeline-testing-and-quality-gates/052-pipeline-testing-and-quality-gates.html"
+        },
+        {
+          "order": 53,
+          "id": "053-artifact-and-package-management",
+          "title": "Artifact and Package Management",
+          "content": "content/053-artifact-and-package-management.json",
+          "page": "topics/053-artifact-and-package-management/053-artifact-and-package-management.html"
+        },
+        {
+          "order": 54,
+          "id": "054-secure-ci-cd-pipelines",
+          "title": "Secure CI/CD Pipelines",
+          "content": "content/054-secure-ci-cd-pipelines.json",
+          "page": "topics/054-secure-ci-cd-pipelines/054-secure-ci-cd-pipelines.html"
+        }
+      ]
+    },
+    {
+      "name": "AWS Operations & Cloud Design",
+      "stage": "Intermediate",
+      "topics": [
+        {
+          "order": 55,
+          "id": "055-aws-ec2-operations",
+          "title": "AWS EC2 Operations",
+          "content": "content/055-aws-ec2-operations.json",
+          "page": "topics/055-aws-ec2-operations/055-aws-ec2-operations.html"
+        },
+        {
+          "order": 56,
+          "id": "056-aws-iam-roles-and-policies",
+          "title": "AWS IAM Roles and Policies",
+          "content": "content/056-aws-iam-roles-and-policies.json",
+          "page": "topics/056-aws-iam-roles-and-policies/056-aws-iam-roles-and-policies.html"
+        },
+        {
+          "order": 57,
+          "id": "057-aws-vpc-and-subnet-design",
+          "title": "AWS VPC and Subnet Design",
+          "content": "content/057-aws-vpc-and-subnet-design.json",
+          "page": "topics/057-aws-vpc-and-subnet-design/057-aws-vpc-and-subnet-design.html"
+        },
+        {
+          "order": 58,
+          "id": "058-aws-load-balancing-and-auto-scaling",
+          "title": "AWS Load Balancing and Auto Scaling",
+          "content": "content/058-aws-load-balancing-and-auto-scaling.json",
+          "page": "topics/058-aws-load-balancing-and-auto-scaling/058-aws-load-balancing-and-auto-scaling.html"
+        },
+        {
+          "order": 59,
+          "id": "059-aws-s3-rds-and-managed-services",
+          "title": "AWS S3, RDS and Managed Services",
+          "content": "content/059-aws-s3-rds-and-managed-services.json",
+          "page": "topics/059-aws-s3-rds-and-managed-services/059-aws-s3-rds-and-managed-services.html"
+        },
+        {
+          "order": 60,
+          "id": "060-aws-cloudwatch-and-alerts",
+          "title": "AWS CloudWatch and Alerts",
+          "content": "content/060-aws-cloudwatch-and-alerts.json",
+          "page": "topics/060-aws-cloudwatch-and-alerts/060-aws-cloudwatch-and-alerts.html"
+        },
+        {
+          "order": 61,
+          "id": "061-aws-cli-and-sdk-basics",
+          "title": "AWS CLI and SDK Basics",
+          "content": "content/061-aws-cli-and-sdk-basics.json",
+          "page": "topics/061-aws-cli-and-sdk-basics/061-aws-cli-and-sdk-basics.html"
+        },
+        {
+          "order": 62,
+          "id": "062-cloud-cost-and-resource-hygiene",
+          "title": "Cloud Cost and Resource Hygiene",
+          "content": "content/062-cloud-cost-and-resource-hygiene.json",
+          "page": "topics/062-cloud-cost-and-resource-hygiene/062-cloud-cost-and-resource-hygiene.html"
+        }
+      ]
+    },
+    {
+      "name": "Terraform & Ansible",
+      "stage": "Intermediate",
+      "topics": [
+        {
+          "order": 63,
+          "id": "063-terraform-fundamentals",
+          "title": "Terraform Fundamentals",
+          "content": "content/063-terraform-fundamentals.json",
+          "page": "topics/063-terraform-fundamentals/063-terraform-fundamentals.html"
+        },
+        {
+          "order": 64,
+          "id": "064-terraform-variables-outputs-and-locals",
+          "title": "Terraform Variables, Outputs and Locals",
+          "content": "content/064-terraform-variables-outputs-and-locals.json",
+          "page": "topics/064-terraform-variables-outputs-and-locals/064-terraform-variables-outputs-and-locals.html"
+        },
+        {
+          "order": 65,
+          "id": "065-terraform-state-and-remote-backends",
+          "title": "Terraform State and Remote Backends",
+          "content": "content/065-terraform-state-and-remote-backends.json",
+          "page": "topics/065-terraform-state-and-remote-backends/065-terraform-state-and-remote-backends.html"
+        },
+        {
+          "order": 66,
+          "id": "066-terraform-modules-and-environments",
+          "title": "Terraform Modules and Environments",
+          "content": "content/066-terraform-modules-and-environments.json",
+          "page": "topics/066-terraform-modules-and-environments/066-terraform-modules-and-environments.html"
+        },
+        {
+          "order": 67,
+          "id": "067-terraform-import-drift-and-lifecycle",
+          "title": "Terraform Import, Drift and Lifecycle",
+          "content": "content/067-terraform-import-drift-and-lifecycle.json",
+          "page": "topics/067-terraform-import-drift-and-lifecycle/067-terraform-import-drift-and-lifecycle.html"
+        },
+        {
+          "order": 68,
+          "id": "068-terraform-security-and-testing-basics",
+          "title": "Terraform Security and Testing Basics",
+          "content": "content/068-terraform-security-and-testing-basics.json",
+          "page": "topics/068-terraform-security-and-testing-basics/068-terraform-security-and-testing-basics.html"
+        },
+        {
+          "order": 69,
+          "id": "069-ansible-fundamentals",
+          "title": "Ansible Fundamentals",
+          "content": "content/069-ansible-fundamentals.json",
+          "page": "topics/069-ansible-fundamentals/069-ansible-fundamentals.html"
+        },
+        {
+          "order": 70,
+          "id": "070-ansible-playbooks-and-roles",
+          "title": "Ansible Playbooks and Roles",
+          "content": "content/070-ansible-playbooks-and-roles.json",
+          "page": "topics/070-ansible-playbooks-and-roles/070-ansible-playbooks-and-roles.html"
+        },
+        {
+          "order": 71,
+          "id": "071-ansible-secrets-and-vault",
+          "title": "Ansible Secrets and Vault",
+          "content": "content/071-ansible-secrets-and-vault.json",
+          "page": "topics/071-ansible-secrets-and-vault/071-ansible-secrets-and-vault.html"
+        }
+      ]
+    },
+    {
+      "name": "Kubernetes & Helm Foundations",
+      "stage": "Intermediate",
+      "topics": [
+        {
+          "order": 72,
+          "id": "072-kubernetes-fundamentals",
+          "title": "Kubernetes Fundamentals",
+          "content": "content/072-kubernetes-fundamentals.json",
+          "page": "topics/072-kubernetes-fundamentals/072-kubernetes-fundamentals.html"
+        },
+        {
+          "order": 73,
+          "id": "073-kubernetes-pods-and-deployments",
+          "title": "Kubernetes Pods and Deployments",
+          "content": "content/073-kubernetes-pods-and-deployments.json",
+          "page": "topics/073-kubernetes-pods-and-deployments/073-kubernetes-pods-and-deployments.html"
+        },
+        {
+          "order": 74,
+          "id": "074-kubernetes-services-and-ingress",
+          "title": "Kubernetes Services and Ingress",
+          "content": "content/074-kubernetes-services-and-ingress.json",
+          "page": "topics/074-kubernetes-services-and-ingress/074-kubernetes-services-and-ingress.html"
+        },
+        {
+          "order": 75,
+          "id": "075-kubernetes-configuration-and-secrets",
+          "title": "Kubernetes Configuration and Secrets",
+          "content": "content/075-kubernetes-configuration-and-secrets.json",
+          "page": "topics/075-kubernetes-configuration-and-secrets/075-kubernetes-configuration-and-secrets.html"
+        },
+        {
+          "order": 76,
+          "id": "076-kubernetes-storage-basics",
+          "title": "Kubernetes Storage Basics",
+          "content": "content/076-kubernetes-storage-basics.json",
+          "page": "topics/076-kubernetes-storage-basics/076-kubernetes-storage-basics.html"
+        },
+        {
+          "order": 77,
+          "id": "077-kubernetes-health-and-resource-controls",
+          "title": "Kubernetes Health and Resource Controls",
+          "content": "content/077-kubernetes-health-and-resource-controls.json",
+          "page": "topics/077-kubernetes-health-and-resource-controls/077-kubernetes-health-and-resource-controls.html"
+        },
+        {
+          "order": 78,
+          "id": "078-helm-fundamentals",
+          "title": "Helm Fundamentals",
+          "content": "content/078-helm-fundamentals.json",
+          "page": "topics/078-helm-fundamentals/078-helm-fundamentals.html"
+        },
+        {
+          "order": 79,
+          "id": "079-kubernetes-troubleshooting-basics",
+          "title": "Kubernetes Troubleshooting Basics",
+          "content": "content/079-kubernetes-troubleshooting-basics.json",
+          "page": "topics/079-kubernetes-troubleshooting-basics/079-kubernetes-troubleshooting-basics.html"
+        }
+      ]
+    },
+    {
+      "name": "Observability, DevSecOps & Intermediate Capstone",
+      "stage": "Intermediate",
+      "topics": [
+        {
+          "order": 80,
+          "id": "080-monitoring-with-prometheus-and-grafana",
+          "title": "Monitoring with Prometheus and Grafana",
+          "content": "content/080-monitoring-with-prometheus-and-grafana.json",
+          "page": "topics/080-monitoring-with-prometheus-and-grafana/080-monitoring-with-prometheus-and-grafana.html"
+        },
+        {
+          "order": 81,
+          "id": "081-centralised-logging-basics",
+          "title": "Centralised Logging Basics",
+          "content": "content/081-centralised-logging-basics.json",
+          "page": "topics/081-centralised-logging-basics/081-centralised-logging-basics.html"
+        },
+        {
+          "order": 82,
+          "id": "082-devsecops-scanning-basics",
+          "title": "DevSecOps Scanning Basics",
+          "content": "content/082-devsecops-scanning-basics.json",
+          "page": "topics/082-devsecops-scanning-basics/082-devsecops-scanning-basics.html"
+        },
+        {
+          "order": 83,
+          "id": "083-secrets-and-access-management",
+          "title": "Secrets and Access Management",
+          "content": "content/083-secrets-and-access-management.json",
+          "page": "topics/083-secrets-and-access-management/083-secrets-and-access-management.html"
+        },
+        {
+          "order": 84,
+          "id": "084-intermediate-capstone-end-to-end-delivery",
+          "title": "Intermediate Capstone: End-to-End Delivery",
+          "content": "content/084-intermediate-capstone-end-to-end-delivery.json",
+          "page": "topics/084-intermediate-capstone-end-to-end-delivery/084-intermediate-capstone-end-to-end-delivery.html"
+        }
+      ]
+    },
+    {
+      "name": "Production Linux, Automation & CI/CD",
+      "stage": "Advanced",
+      "topics": [
+        {
+          "order": 85,
+          "id": "085-advanced-linux-performance-analysis",
+          "title": "Advanced Linux Performance Analysis",
+          "content": "content/085-advanced-linux-performance-analysis.json",
+          "page": "topics/085-advanced-linux-performance-analysis/085-advanced-linux-performance-analysis.html"
+        },
+        {
+          "order": 86,
+          "id": "086-advanced-network-and-tls-troubleshooting",
+          "title": "Advanced Network and TLS Troubleshooting",
+          "content": "content/086-advanced-network-and-tls-troubleshooting.json",
+          "page": "topics/086-advanced-network-and-tls-troubleshooting/086-advanced-network-and-tls-troubleshooting.html"
+        },
+        {
+          "order": 87,
+          "id": "087-reliable-automation-design",
+          "title": "Reliable Automation Design",
+          "content": "content/087-reliable-automation-design.json",
+          "page": "topics/087-reliable-automation-design/087-reliable-automation-design.html"
+        },
+        {
+          "order": 88,
+          "id": "088-advanced-ci-cd-architecture",
+          "title": "Advanced CI/CD Architecture",
+          "content": "content/088-advanced-ci-cd-architecture.json",
+          "page": "topics/088-advanced-ci-cd-architecture/088-advanced-ci-cd-architecture.html"
+        },
+        {
+          "order": 89,
+          "id": "089-supply-chain-security",
+          "title": "Supply Chain Security",
+          "content": "content/089-supply-chain-security.json",
+          "page": "topics/089-supply-chain-security/089-supply-chain-security.html"
+        },
+        {
+          "order": 90,
+          "id": "090-advanced-jenkins-administration",
+          "title": "Advanced Jenkins Administration",
+          "content": "content/090-advanced-jenkins-administration.json",
+          "page": "topics/090-advanced-jenkins-administration/090-advanced-jenkins-administration.html"
+        },
+        {
+          "order": 91,
+          "id": "091-advanced-github-actions-security",
+          "title": "Advanced GitHub Actions Security",
+          "content": "content/091-advanced-github-actions-security.json",
+          "page": "topics/091-advanced-github-actions-security/091-advanced-github-actions-security.html"
+        }
+      ],
+      "careerFocus": {
+        "roles": [
+          "DevOps Engineer with independent ownership",
+          "Site Reliability Engineer (SRE)",
+          "Platform Engineer",
+          "Cloud Infrastructure Engineer",
+          "DevSecOps Engineer with deeper security expertise",
+          "Senior DevOps Engineer after relevant professional experience"
+        ],
+        "reality": "This stage builds toward experienced and specialist roles. Completing lessons alone does not qualify someone as senior; employers expect production ownership, judgment and incident experience.",
+        "aiops": "AIOps / Intelligent Operations specialisation, typically after building solid DevOps, cloud, and observability skills."
+      },
+      "projects": [
+        {
+          "title": "Project A1 — Production-Style Platform",
+          "tasks": [
+            "Deploy a multi-service application with separated environments and repeatable infrastructure.",
+            "Use Terraform modules and CI/CD or GitOps with review gates.",
+            "Add ingress/load balancing, health checks, resource limits and access controls.",
+            "Document architecture, threat considerations and cost."
+          ],
+          "deliverables": [
+            "Architecture decision records",
+            "Infrastructure/deployment code",
+            "Promotion workflow",
+            "Security and cost review"
+          ]
+        },
+        {
+          "title": "Project A2 — SRE, Monitoring and Incident Simulation",
+          "tasks": [
+            "Define a service-level objective and measurable indicators.",
+            "Create useful dashboards and alerts.",
+            "Simulate an outage, diagnose telemetry, restore service and write a blameless postmortem.",
+            "Practise backup restoration and recovery objectives."
+          ],
+          "deliverables": [
+            "SLO/SLI document",
+            "Dashboards and alerts",
+            "Incident timeline and runbook",
+            "Postmortem and recovery evidence"
+          ]
+        },
+        {
+          "title": "Project A3 — Secure GitOps Kubernetes Platform",
+          "tasks": [
+            "Use Argo CD or another GitOps controller for reviewed changes.",
+            "Package workloads with Helm and environment-specific configuration.",
+            "Add scanning, secret handling, least-privilege access and policy checks.",
+            "Demonstrate failed deployment, rollback and recovery."
+          ],
+          "deliverables": [
+            "GitOps repository",
+            "Helm chart",
+            "Security report",
+            "Deployment/recovery runbooks"
+          ]
+        },
+        {
+          "name": "AIOps Incident Intelligence Lab",
+          "description": "Build a lab that collects metrics and logs, detects abnormal behaviour, groups noisy alerts, suggests evidence-based root causes, and proposes remediation. Require human approval before actions that change infrastructure."
+        }
+      ],
+      "objective": "Design, secure, scale and recover production systems. Advanced topics require practice and judgment; not every employer or role uses every listed tool. Add an AIOps specialisation applying statistics, anomaly detection, event correlation, incident investigation, and carefully controlled AI assistance to observable systems.",
+      "exitCriteria": [
+        "Design resilient deployments and explain availability, recovery, security and cost trade-offs.",
+        "Operate Kubernetes with resource controls, autoscaling, access controls and troubleshooting.",
+        "Use GitOps to promote reviewed changes.",
+        "Design reusable Terraform modules and safe state/change workflows.",
+        "Create SLOs/SLIs, alerts, dashboards and incident runbooks.",
+        "Apply supply-chain security, scanning, secret controls and policy checks.",
+        "Demonstrate disaster recovery, backup restoration, rollback and post-incident learning.",
+        "Explain architecture decisions, risks, costs and capacity trade-offs.",
+        "Demonstrate an AIOps lab with documented evaluation, false-positive handling, evidence-backed incident summaries, and human-approved remediation; explain the limitations of AI-generated diagnoses."
+      ]
+    },
+    {
+      "name": "Advanced AWS & Infrastructure as Code",
+      "stage": "Advanced",
+      "topics": [
+        {
+          "order": 92,
+          "id": "092-aws-multi-account-and-environment-strategy",
+          "title": "AWS Multi-Account and Environment Strategy",
+          "content": "content/092-aws-multi-account-and-environment-strategy.json",
+          "page": "topics/092-aws-multi-account-and-environment-strategy/092-aws-multi-account-and-environment-strategy.html"
+        },
+        {
+          "order": 93,
+          "id": "093-aws-high-availability-architecture",
+          "title": "AWS High Availability Architecture",
+          "content": "content/093-aws-high-availability-architecture.json",
+          "page": "topics/093-aws-high-availability-architecture/093-aws-high-availability-architecture.html"
+        },
+        {
+          "order": 94,
+          "id": "094-aws-private-connectivity-and-network-architecture",
+          "title": "AWS Private Connectivity and Network Architecture",
+          "content": "content/094-aws-private-connectivity-and-network-architecture.json",
+          "page": "topics/094-aws-private-connectivity-and-network-architecture/094-aws-private-connectivity-and-network-architecture.html"
+        },
+        {
+          "order": 95,
+          "id": "095-aws-dns-certificates-and-edge-delivery",
+          "title": "AWS DNS, Certificates and Edge Delivery",
+          "content": "content/095-aws-dns-certificates-and-edge-delivery.json",
+          "page": "topics/095-aws-dns-certificates-and-edge-delivery/095-aws-dns-certificates-and-edge-delivery.html"
+        },
+        {
+          "order": 96,
+          "id": "096-aws-backup-and-disaster-recovery",
+          "title": "AWS Backup and Disaster Recovery",
+          "content": "content/096-aws-backup-and-disaster-recovery.json",
+          "page": "topics/096-aws-backup-and-disaster-recovery/096-aws-backup-and-disaster-recovery.html"
+        },
+        {
+          "order": 97,
+          "id": "097-aws-security-monitoring",
+          "title": "AWS Security Monitoring",
+          "content": "content/097-aws-security-monitoring.json",
+          "page": "topics/097-aws-security-monitoring/097-aws-security-monitoring.html"
+        },
+        {
+          "order": 98,
+          "id": "098-advanced-terraform-module-design",
+          "title": "Advanced Terraform Module Design",
+          "content": "content/098-advanced-terraform-module-design.json",
+          "page": "topics/098-advanced-terraform-module-design/098-advanced-terraform-module-design.html"
+        },
+        {
+          "order": 99,
+          "id": "099-terraform-workspaces-and-environment-trade-offs",
+          "title": "Terraform Workspaces and Environment Trade-offs",
+          "content": "content/099-terraform-workspaces-and-environment-trade-offs.json",
+          "page": "topics/099-terraform-workspaces-and-environment-trade-offs/099-terraform-workspaces-and-environment-trade-offs.html"
+        },
+        {
+          "order": 100,
+          "id": "100-terraform-policy-and-compliance",
+          "title": "Terraform Policy and Compliance",
+          "content": "content/100-terraform-policy-and-compliance.json",
+          "page": "topics/100-terraform-policy-and-compliance/100-terraform-policy-and-compliance.html"
+        },
+        {
+          "order": 101,
+          "id": "101-infrastructure-change-safety",
+          "title": "Infrastructure Change Safety",
+          "content": "content/101-infrastructure-change-safety.json",
+          "page": "topics/101-infrastructure-change-safety/101-infrastructure-change-safety.html"
+        },
+        {
+          "order": 102,
+          "id": "102-advanced-ansible-operations",
+          "title": "Advanced Ansible Operations",
+          "content": "content/102-advanced-ansible-operations.json",
+          "page": "topics/102-advanced-ansible-operations/102-advanced-ansible-operations.html"
+        }
+      ]
+    },
+    {
+      "name": "Advanced Kubernetes, Helm & GitOps",
+      "stage": "Advanced",
+      "topics": [
+        {
+          "order": 103,
+          "id": "103-kubernetes-architecture-and-scheduling",
+          "title": "Kubernetes Architecture and Scheduling",
+          "content": "content/103-kubernetes-architecture-and-scheduling.json",
+          "page": "topics/103-kubernetes-architecture-and-scheduling/103-kubernetes-architecture-and-scheduling.html"
+        },
+        {
+          "order": 104,
+          "id": "104-kubernetes-rbac-and-service-accounts",
+          "title": "Kubernetes RBAC and Service Accounts",
+          "content": "content/104-kubernetes-rbac-and-service-accounts.json",
+          "page": "topics/104-kubernetes-rbac-and-service-accounts/104-kubernetes-rbac-and-service-accounts.html"
+        },
+        {
+          "order": 105,
+          "id": "105-kubernetes-network-policies",
+          "title": "Kubernetes Network Policies",
+          "content": "content/105-kubernetes-network-policies.json",
+          "page": "topics/105-kubernetes-network-policies/105-kubernetes-network-policies.html"
+        },
+        {
+          "order": 106,
+          "id": "106-kubernetes-autoscaling",
+          "title": "Kubernetes Autoscaling",
+          "content": "content/106-kubernetes-autoscaling.json",
+          "page": "topics/106-kubernetes-autoscaling/106-kubernetes-autoscaling.html"
+        },
+        {
+          "order": 107,
+          "id": "107-kubernetes-advanced-workload-patterns",
+          "title": "Kubernetes Advanced Workload Patterns",
+          "content": "content/107-kubernetes-advanced-workload-patterns.json",
+          "page": "topics/107-kubernetes-advanced-workload-patterns/107-kubernetes-advanced-workload-patterns.html"
+        },
+        {
+          "order": 108,
+          "id": "108-kubernetes-storage-and-stateful-workloads",
+          "title": "Kubernetes Storage and Stateful Workloads",
+          "content": "content/108-kubernetes-storage-and-stateful-workloads.json",
+          "page": "topics/108-kubernetes-storage-and-stateful-workloads/108-kubernetes-storage-and-stateful-workloads.html"
+        },
+        {
+          "order": 109,
+          "id": "109-kubernetes-cluster-upgrade-and-maintenance",
+          "title": "Kubernetes Cluster Upgrade and Maintenance",
+          "content": "content/109-kubernetes-cluster-upgrade-and-maintenance.json",
+          "page": "topics/109-kubernetes-cluster-upgrade-and-maintenance/109-kubernetes-cluster-upgrade-and-maintenance.html"
+        },
+        {
+          "order": 110,
+          "id": "110-kubernetes-security-hardening",
+          "title": "Kubernetes Security Hardening",
+          "content": "content/110-kubernetes-security-hardening.json",
+          "page": "topics/110-kubernetes-security-hardening/110-kubernetes-security-hardening.html"
+        },
+        {
+          "order": 111,
+          "id": "111-kubernetes-backup-and-recovery",
+          "title": "Kubernetes Backup and Recovery",
+          "content": "content/111-kubernetes-backup-and-recovery.json",
+          "page": "topics/111-kubernetes-backup-and-recovery/111-kubernetes-backup-and-recovery.html"
+        },
+        {
+          "order": 112,
+          "id": "112-helm-advanced-patterns",
+          "title": "Helm Advanced Patterns",
+          "content": "content/112-helm-advanced-patterns.json",
+          "page": "topics/112-helm-advanced-patterns/112-helm-advanced-patterns.html"
+        },
+        {
+          "order": 113,
+          "id": "113-gitops-fundamentals",
+          "title": "GitOps Fundamentals",
+          "content": "content/113-gitops-fundamentals.json",
+          "page": "topics/113-gitops-fundamentals/113-gitops-fundamentals.html"
+        },
+        {
+          "order": 114,
+          "id": "114-argo-cd-fundamentals",
+          "title": "Argo CD Fundamentals",
+          "content": "content/114-argo-cd-fundamentals.json",
+          "page": "topics/114-argo-cd-fundamentals/114-argo-cd-fundamentals.html"
+        },
+        {
+          "order": 115,
+          "id": "115-progressive-delivery",
+          "title": "Progressive Delivery",
+          "content": "content/115-progressive-delivery.json",
+          "page": "topics/115-progressive-delivery/115-progressive-delivery.html"
+        },
+        {
+          "order": 116,
+          "id": "116-service-mesh-concepts",
+          "title": "Service Mesh Concepts",
+          "content": "content/116-service-mesh-concepts.json",
+          "page": "topics/116-service-mesh-concepts/116-service-mesh-concepts.html"
+        }
+      ]
+    },
+    {
+      "name": "Observability, SRE & Resilience Engineering",
+      "stage": "Advanced",
+      "topics": [
+        {
+          "order": 117,
+          "id": "117-observability-design",
+          "title": "Observability Design",
+          "content": "content/117-observability-design.json",
+          "page": "topics/117-observability-design/117-observability-design.html"
+        },
+        {
+          "order": 118,
+          "id": "118-opentelemetry-fundamentals",
+          "title": "OpenTelemetry Fundamentals",
+          "content": "content/118-opentelemetry-fundamentals.json",
+          "page": "topics/118-opentelemetry-fundamentals/118-opentelemetry-fundamentals.html"
+        },
+        {
+          "order": 119,
+          "id": "119-prometheus-alert-design",
+          "title": "Prometheus Alert Design",
+          "content": "content/119-prometheus-alert-design.json",
+          "page": "topics/119-prometheus-alert-design/119-prometheus-alert-design.html"
+        },
+        {
+          "order": 120,
+          "id": "120-sre-fundamentals",
+          "title": "SRE Fundamentals",
+          "content": "content/120-sre-fundamentals.json",
+          "page": "topics/120-sre-fundamentals/120-sre-fundamentals.html"
+        },
+        {
+          "order": 121,
+          "id": "121-incident-response-and-postmortems",
+          "title": "Incident Response and Postmortems",
+          "content": "content/121-incident-response-and-postmortems.json",
+          "page": "topics/121-incident-response-and-postmortems/121-incident-response-and-postmortems.html"
+        },
+        {
+          "order": 122,
+          "id": "122-performance-and-capacity-engineering",
+          "title": "Performance and Capacity Engineering",
+          "content": "content/122-performance-and-capacity-engineering.json",
+          "page": "topics/122-performance-and-capacity-engineering/122-performance-and-capacity-engineering.html"
+        },
+        {
+          "order": 123,
+          "id": "123-resilience-and-failure-testing",
+          "title": "Resilience and Failure Testing",
+          "content": "content/123-resilience-and-failure-testing.json",
+          "page": "topics/123-resilience-and-failure-testing/123-resilience-and-failure-testing.html"
+        }
+      ]
+    },
+    {
+      "name": "Security, FinOps, Platform Engineering & Career",
+      "stage": "Advanced",
+      "topics": [
+        {
+          "order": 124,
+          "id": "124-secrets-management-at-scale",
+          "title": "Secrets Management at Scale",
+          "content": "content/124-secrets-management-at-scale.json",
+          "page": "topics/124-secrets-management-at-scale/124-secrets-management-at-scale.html"
+        },
+        {
+          "order": 125,
+          "id": "125-devsecops-policy-and-compliance",
+          "title": "DevSecOps Policy and Compliance",
+          "content": "content/125-devsecops-policy-and-compliance.json",
+          "page": "topics/125-devsecops-policy-and-compliance/125-devsecops-policy-and-compliance.html"
+        },
+        {
+          "order": 126,
+          "id": "126-software-composition-and-container-security",
+          "title": "Software Composition and Container Security",
+          "content": "content/126-software-composition-and-container-security.json",
+          "page": "topics/126-software-composition-and-container-security/126-software-composition-and-container-security.html"
+        },
+        {
+          "order": 127,
+          "id": "127-finops-and-cloud-cost-optimisation",
+          "title": "FinOps and Cloud Cost Optimisation",
+          "content": "content/127-finops-and-cloud-cost-optimisation.json",
+          "page": "topics/127-finops-and-cloud-cost-optimisation/127-finops-and-cloud-cost-optimisation.html"
+        },
+        {
+          "order": 128,
+          "id": "128-platform-engineering-fundamentals",
+          "title": "Platform Engineering Fundamentals",
+          "content": "content/128-platform-engineering-fundamentals.json",
+          "page": "topics/128-platform-engineering-fundamentals/128-platform-engineering-fundamentals.html"
+        },
+        {
+          "order": 129,
+          "id": "129-developer-experience-and-reusable-templates",
+          "title": "Developer Experience and Reusable Templates",
+          "content": "content/129-developer-experience-and-reusable-templates.json",
+          "page": "topics/129-developer-experience-and-reusable-templates/129-developer-experience-and-reusable-templates.html"
+        },
+        {
+          "order": 130,
+          "id": "130-multi-environment-and-multi-cloud-trade-offs",
+          "title": "Multi-Environment and Multi-Cloud Trade-offs",
+          "content": "content/130-multi-environment-and-multi-cloud-trade-offs.json",
+          "page": "topics/130-multi-environment-and-multi-cloud-trade-offs/130-multi-environment-and-multi-cloud-trade-offs.html"
+        },
+        {
+          "order": 131,
+          "id": "131-advanced-disaster-recovery-exercise",
+          "title": "Advanced Disaster Recovery Exercise",
+          "content": "content/131-advanced-disaster-recovery-exercise.json",
+          "page": "topics/131-advanced-disaster-recovery-exercise/131-advanced-disaster-recovery-exercise.html"
+        },
+        {
+          "order": 132,
+          "id": "132-architecture-decision-records",
+          "title": "Architecture Decision Records",
+          "content": "content/132-architecture-decision-records.json",
+          "page": "topics/132-architecture-decision-records/132-architecture-decision-records.html"
+        },
+        {
+          "order": 133,
+          "id": "133-advanced-capstone-secure-production-platform",
+          "title": "Advanced Capstone: Secure Production Platform",
+          "content": "content/133-advanced-capstone-secure-production-platform.json",
+          "page": "topics/133-advanced-capstone-secure-production-platform/133-advanced-capstone-secure-production-platform.html"
+        },
+        {
+          "order": 134,
+          "id": "134-portfolio-technical-interviews-and-career-growth",
+          "title": "Portfolio, Technical Interviews and Career Growth",
+          "content": "content/134-portfolio-technical-interviews-and-career-growth.json",
+          "page": "topics/134-portfolio-technical-interviews-and-career-growth/134-portfolio-technical-interviews-and-career-growth.html"
+        }
+      ]
+    },
+    {
+      "name": "AIOps & Intelligent Operations",
+      "stage": "Advanced",
+      "topics": [
+        {
+          "order": 135,
+          "id": "135-aiops-fundamentals-and-use-cases",
+          "title": "AIOps Fundamentals and Use Cases",
+          "content": "content/135-aiops-fundamentals-and-use-cases.json",
+          "page": "topics/135-aiops-fundamentals-and-use-cases/135-aiops-fundamentals-and-use-cases.html"
+        },
+        {
+          "order": 136,
+          "id": "136-operational-data-metrics-logs-traces-and-events",
+          "title": "Operational Data: Metrics, Logs, Traces and Events",
+          "content": "content/136-operational-data-metrics-logs-traces-and-events.json",
+          "page": "topics/136-operational-data-metrics-logs-traces-and-events/136-operational-data-metrics-logs-traces-and-events.html"
+        },
+        {
+          "order": 137,
+          "id": "137-preparing-and-labelling-operational-data",
+          "title": "Preparing and Labelling Operational Data",
+          "content": "content/137-preparing-and-labelling-operational-data.json",
+          "page": "topics/137-preparing-and-labelling-operational-data/137-preparing-and-labelling-operational-data.html"
+        },
+        {
+          "order": 138,
+          "id": "138-statistics-for-operations-and-anomaly-detection",
+          "title": "Statistics for Operations and Anomaly Detection",
+          "content": "content/138-statistics-for-operations-and-anomaly-detection.json",
+          "page": "topics/138-statistics-for-operations-and-anomaly-detection/138-statistics-for-operations-and-anomaly-detection.html"
+        },
+        {
+          "order": 139,
+          "id": "139-time-series-analysis-and-baseline-detection",
+          "title": "Time-Series Analysis and Baseline Detection",
+          "content": "content/139-time-series-analysis-and-baseline-detection.json",
+          "page": "topics/139-time-series-analysis-and-baseline-detection/139-time-series-analysis-and-baseline-detection.html"
+        },
+        {
+          "order": 140,
+          "id": "140-alert-noise-reduction-and-alert-grouping",
+          "title": "Alert Noise Reduction and Alert Grouping",
+          "content": "content/140-alert-noise-reduction-and-alert-grouping.json",
+          "page": "topics/140-alert-noise-reduction-and-alert-grouping/140-alert-noise-reduction-and-alert-grouping.html"
+        },
+        {
+          "order": 141,
+          "id": "141-event-correlation-and-incident-prioritisation",
+          "title": "Event Correlation and Incident Prioritisation",
+          "content": "content/141-event-correlation-and-incident-prioritisation.json",
+          "page": "topics/141-event-correlation-and-incident-prioritisation/141-event-correlation-and-incident-prioritisation.html"
+        },
+        {
+          "order": 142,
+          "id": "142-root-cause-analysis-with-evidence-and-dependency-context",
+          "title": "Root Cause Analysis with Evidence and Dependency Context",
+          "content": "content/142-root-cause-analysis-with-evidence-and-dependency-context.json",
+          "page": "topics/142-root-cause-analysis-with-evidence-and-dependency-context/142-root-cause-analysis-with-evidence-and-dependency-context.html"
+        },
+        {
+          "order": 143,
+          "id": "143-predictive-monitoring-and-capacity-forecasting",
+          "title": "Predictive Monitoring and Capacity Forecasting",
+          "content": "content/143-predictive-monitoring-and-capacity-forecasting.json",
+          "page": "topics/143-predictive-monitoring-and-capacity-forecasting/143-predictive-monitoring-and-capacity-forecasting.html"
+        },
+        {
+          "order": 144,
+          "id": "144-applying-machine-learning-to-operational-signals",
+          "title": "Applying Machine Learning to Operational Signals",
+          "content": "content/144-applying-machine-learning-to-operational-signals.json",
+          "page": "topics/144-applying-machine-learning-to-operational-signals/144-applying-machine-learning-to-operational-signals.html"
+        },
+        {
+          "order": 145,
+          "id": "145-aiops-pipelines-and-model-evaluation",
+          "title": "AIOps Pipelines and Model Evaluation",
+          "content": "content/145-aiops-pipelines-and-model-evaluation.json",
+          "page": "topics/145-aiops-pipelines-and-model-evaluation/145-aiops-pipelines-and-model-evaluation.html"
+        },
+        {
+          "order": 146,
+          "id": "146-llm-assisted-incident-investigation",
+          "title": "LLM-Assisted Incident Investigation",
+          "content": "content/146-llm-assisted-incident-investigation.json",
+          "page": "topics/146-llm-assisted-incident-investigation/146-llm-assisted-incident-investigation.html"
+        },
+        {
+          "order": 147,
+          "id": "147-retrieval-augmented-generation-for-runbooks-and-knowledge-bases",
+          "title": "Retrieval-Augmented Generation for Runbooks and Knowledge Bases",
+          "content": "content/147-retrieval-augmented-generation-for-runbooks-and-knowledge-bases.json",
+          "page": "topics/147-retrieval-augmented-generation-for-runbooks-and-knowledge-bases/147-retrieval-augmented-generation-for-runbooks-and-knowledge-bases.html"
+        },
+        {
+          "order": 148,
+          "id": "148-safe-ai-assisted-remediation-and-human-approval",
+          "title": "Safe AI-Assisted Remediation and Human Approval",
+          "content": "content/148-safe-ai-assisted-remediation-and-human-approval.json",
+          "page": "topics/148-safe-ai-assisted-remediation-and-human-approval/148-safe-ai-assisted-remediation-and-human-approval.html"
+        },
+        {
+          "order": 149,
+          "id": "149-aiops-integration-with-prometheus-grafana-and-log-platforms",
+          "title": "AIOps Integration with Prometheus, Grafana and Log Platforms",
+          "content": "content/149-aiops-integration-with-prometheus-grafana-and-log-platforms.json",
+          "page": "topics/149-aiops-integration-with-prometheus-grafana-and-log-platforms/149-aiops-integration-with-prometheus-grafana-and-log-platforms.html"
+        },
+        {
+          "order": 150,
+          "id": "150-aiops-capstone-detect-diagnose-and-safely-respond-to-an-incident",
+          "title": "AIOps Capstone: Detect, Diagnose and Safely Respond to an Incident",
+          "content": "content/150-aiops-capstone-detect-diagnose-and-safely-respond-to-an-incident.json",
+          "page": "topics/150-aiops-capstone-detect-diagnose-and-safely-respond-to-an-incident/150-aiops-capstone-detect-diagnose-and-safely-respond-to-an-incident.html"
+        }
+      ]
+    }
+  ]
+}

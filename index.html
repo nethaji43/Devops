@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DevOps Roadmap</title><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/style.css"></head>
+<body><div class="wrap">
+<div class="hero">
+  <small>DevOps · Self-Study Line Map</small>
+  <h1>Complete DevOps Roadmap</h1>
+  <p class="muted" id="intro"></p>
+</div>
+<div class="score"><b id="score">0/0</b><div class="bar"><i id="scorebar"></i></div><span id="scorepct" class="muted">0% complete</span></div>
+<div class="tools">
+  <input id="search" type="search" placeholder="Search stops…" aria-label="Search stops">
+  <button data-f="all" class="on">All</button><button data-f="remaining">Remaining</button><button data-f="completed">Completed</button>
+</div>
+<div id="map"></div>
+<div class="foot"><span>Progress saved in this browser</span><button id="reset">Reset progress</button></div>
+</div>
+<script src="assets/common.js"></script>
+<script>
+const COLORS=["#2f81f7","#3fb950","#d29922","#f85149","#a371f7","#db61a2","#39c5cf","#f0883e","#7ee787","#ff7b72"];
+let road,data={},filter="all",term="";
+function render(){
+  let total=0,doneStops=0,html="";
+  road.categories.forEach((c,ci)=>{
+    const stops=c.topics.map(t=>{
+      const d=data[t.id],n=d?d.items.length:0,k=d?Object.keys(deReadStore(deTopicItemsKey(t.order))).length:0;
+      return {t,d,n,k,done:n>0&&k===n};
+    });
+    total+=stops.length;doneStops+=stops.filter(s=>s.done).length;
+    const shown=stops.filter(s=>
+      (filter==="all"||(filter==="completed"?s.done:!s.done))&&s.t.title.toLowerCase().includes(term));
+    if(!shown.length)return;
+    html+=`<section class="line" style="--c:${COLORS[ci%COLORS.length]}"><h2>${esc(c.name)}<span class="badge">${stops.filter(s=>s.done).length}/${stops.length}</span></h2><ul class="stops">`+
+      shown.map(s=>{
+        const inner=`<span>${s.t.order}. ${esc(s.t.title)}</span><span class="meta">${s.d?`${s.k}/${s.n} · ${pct(s.k,s.n)}% ›`:"Coming soon"}</span>`;
+        return `<li class="stop ${s.done?"done":""} ${s.d?"":"soon"}">`+(s.d?`<a class="row2" href="${s.t.page}">${inner}</a>`:`<div class="row2">${inner}</div>`)+`</li>`;
+      }).join("")+`</ul></section>`;
+  });
+  document.getElementById("map").innerHTML=html||`<p class="empty">No stops match that search.</p>`;
+  document.getElementById("score").textContent=`${doneStops}/${total}`;
+  document.getElementById("scorebar").style.width=pct(doneStops,total)+"%";
+  document.getElementById("scorepct").textContent=pct(doneStops,total)+"% complete";
+  document.getElementById("intro").textContent=`${total} stops across ${road.categories.length} lines. Click any stop with an arrow to open it and mark items learned — your progress is saved in this browser.`;
+}
+(async()=>{
+  road=await getJSON("assets/roadmap.json");
+  await Promise.all(road.categories.flatMap(c=>c.topics).map(t=>getJSON(t.content).then(d=>data[t.id]=d).catch(()=>{})));
+  render();
+  document.getElementById("search").oninput=e=>{term=e.target.value.trim().toLowerCase();render()};
+  document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{
+    filter=b.dataset.f;
+    document.querySelectorAll("[data-f]").forEach(x=>x.classList.toggle("on",x===b));render();});
+  document.getElementById("reset").onclick=()=>{if(confirm("Reset all progress?")){try{Object.keys(localStorage).filter(k=>k.startsWith("devops_")).forEach(k=>localStorage.removeItem(k))}catch(e){}render()}};
+})().catch(()=>document.getElementById("map").innerHTML=`<p class="empty">Could not load assets/roadmap.json. Open this through a web server or GitHub Pages, not by double-clicking the file.</p>`);
+</script></body></html>
