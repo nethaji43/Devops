@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Linux Fundamentals — DevOps Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  :root{ --ring-color:#F0883E; --tc:#F0883E; }
+  body{ background:radial-gradient(ellipse 900px 500px at 15% -10%, rgba(240,136,62,0.08), transparent), var(--bg); }
+  .hero{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:8px;}
+  .section{margin-top:34px; border:1px solid var(--border); border-radius:14px; background:var(--surface); overflow:hidden;}
+  .section.hidden{display:none;}
+  .section-head{display:flex; align-items:center; gap:10px; padding:16px 20px; border-bottom:1px solid var(--border); flex-wrap:wrap;}
+  .section-title{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:16.5px;}
+  .star{color:#E3B341; font-size:14px;}
+  .section-count{margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--text-faint); background:var(--surface-2); border:1px solid var(--border); border-radius:20px; padding:3px 10px;}
+  .group-tag{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#0D1117; background:var(--tc); border-radius:5px; padding:2px 7px; letter-spacing:.05em;}
+  .section .note, .section .cmdbox, .section .workflow{margin-left:20px; margin-right:20px;}
+  .items{padding:6px 8px 16px;}
+  .item{display:flex; align-items:flex-start; gap:12px; padding:9px 12px; border-radius:9px; transition:background .12s;}
+  .item:hover{background:var(--surface-2);}
+  .check{width:20px; height:20px; border-radius:6px; border:2px solid var(--border); flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--bg); cursor:pointer; transition:all .15s;}
+  .item.done .check{background:var(--tc); border-color:var(--tc);}
+  .item-num{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-faint); flex-shrink:0; width:26px; margin-top:2px;}
+  .item-body{flex:1; min-width:0;}
+  a.item-text{font-size:14.5px; color:var(--text); transition:color .15s;}
+  a.item-text:hover{color:var(--tc);}
+  .item.done .item-text{color:var(--text-dim);}
+  .item-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;}
+  .item-tag{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--text-faint); background:var(--surface-2); border:1px solid var(--border); border-radius:5px; padding:2px 7px;}
+  .opt-tag{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-faint); border:1px solid var(--border); border-radius:5px; padding:1px 6px; margin-left:6px;}
+  .item.item-hidden{display:none;}
+  .workflow{padding:18px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; margin-top:14px; margin-bottom:18px;}
+  .wf-step{display:flex; align-items:center; gap:12px;}
+  .wf-dot{width:10px; height:10px; border-radius:50%; background:var(--tc); flex-shrink:0;}
+  .wf-text{font-family:'JetBrains Mono',monospace; font-size:13px;}
+  .wf-line{width:2px; height:16px; background:var(--tc); opacity:.35; margin-left:4px;}
+</style>
+</head>
+<body>
+<div class="wrap narrow">
+  <a class="back" href="../../index.html">&larr; BACK TO ROADMAP</a>
+  <p class="crumb"><b>Linux &amp; Operating Systems</b> &middot; Topic 4 of 150</p>
+  <div class="hero">
+    <div>
+      <h1>Linux Fundamentals</h1>
+      <p class="sub">The Linux basics every DevOps engineer needs: the terminal, files, users, permissions, processes, services, logs and basic troubleshooting. Click any item to open its notes, practice, and Q&amp;A.</p>
+    </div>
+    <div class="ring-wrap">
+      <svg class="ring" width="60" height="60" viewBox="0 0 64 64">
+        <circle class="ring-track" cx="32" cy="32" r="27"></circle>
+        <circle id="ringFill" class="ring-fill" cx="32" cy="32" r="27"></circle>
+      </svg>
+      <div><div class="ring-num" id="progressNum">0/352</div><div class="ring-label">LEARNED</div></div>
+    </div>
+  </div>
+  <input class="search" id="search" type="text" placeholder="Search within Linux Fundamentals — e.g. chmod, grep, systemctl..." style="margin-top:28px;" />
+  <div id="sections"></div>
+  <div class="footer"><span class="footer-note">PROGRESS SAVED IN THIS BROWSER &middot; SYNCS WITH THE MAIN ROADMAP</span></div>
+</div>
+<script src="../../assets/common.js"></script>
+<script>
+const TOPIC_ID = 4;                          // = topic number on the main roadmap
+const CONTENT_SLUG = '004-linux-fundamentals'; // = content/<slug>.json, used for item.html links
+const ITEMS_KEY = deTopicItemsKey(TOPIC_ID);
+
+const SECTIONS = [
+ {
+  "title": "4.1 Introduction to Linux",
+  "items": [
+   {
+    "t": "What is Linux?"
+   },
+   {
+    "t": "Why Linux is important in DevOps"
+   },
+   {
+    "t": "History and evolution of Linux"
+   },
+   {
+    "t": "What is an operating system?"
+   },
+   {
+    "t": "Linux vs. Windows"
+   },
+   {
+    "t": "Linux vs. Unix"
+   },
+   {
+    "t": "Open-source software and the Linux philosophy"
+   },
+   {
+    "t": "What is the Linux kernel?"
+   },
+   {
+    "t": "Linux kernel vs. operating system"
+   },
+   {
+    "t": "What is a Linux distribution?"
+   },
+   {
+    "t": "Popular Linux distributions: Ubuntu, Debian, Fedora, and Red Hat Enterprise Linux"
+   },
+   {
+    "t": "Ubuntu vs. CentOS vs. RHEL"
+   },
+   {
+    "t": "Linux use cases in the IT industry"
+   },
+   {
+    "t": "Why Linux is widely used on servers and cloud platforms"
+   },
+   {
+    "t": "Common Linux terminology"
+   }
+  ],
+  "intro": {
+   "type": "info",
+   "text": "Linux basics for DevOps: the terminal, files, permissions and basic administration. Advanced scripting, networking, server administration and automation come in their own topics later."
+  }
+ },
+ {
+  "title": "4.2 Linux Architecture and Components",
+  "items": [
+   {
+    "t": "Overview of Linux architecture"
+   },
+   {
+    "t": "What is the Linux kernel?"
+   },
+   {
+    "t": "What is a shell?"
+   },
+   {
+    "t": "What is a terminal?"
+   },
+   {
+    "t": "Terminal vs. shell vs. console"
+   },
+   {
+    "t": "What is a command-line interface (CLI)?"
+   },
+   {
+    "t": "What is a graphical user interface (GUI)?"
+   },
+   {
+    "t": "User space vs. kernel space"
+   },
+   {
+    "t": "What are system calls?"
+   },
+   {
+    "t": "What are Linux utilities?"
+   },
+   {
+    "t": "What are system libraries?"
+   },
+   {
+    "t": "Understanding hardware and software interaction in Linux"
+   },
+   {
+    "t": "How a Linux command gets executed"
+   },
+   {
+    "t": "Understanding the Linux boot process"
+   },
+   {
+    "t": "Basic Linux architecture diagram"
+   }
+  ]
+ },
+ {
+  "title": "4.3 Setting Up a Linux Environment",
+  "items": [
+   {
+    "t": "Different ways to use Linux"
+   },
+   {
+    "t": "Installing Linux on a physical machine"
+   },
+   {
+    "t": "Running Linux using a virtual machine"
+   },
+   {
+    "t": "What is virtualization?"
+   },
+   {
+    "t": "Running Linux using VirtualBox"
+   },
+   {
+    "t": "Using Ubuntu through Windows Subsystem for Linux (WSL)"
+   },
+   {
+    "t": "Accessing Linux through a cloud virtual machine"
+   },
+   {
+    "t": "Understanding Linux login credentials"
+   },
+   {
+    "t": "Opening and using the terminal"
+   },
+   {
+    "t": "Understanding the command prompt"
+   },
+   {
+    "t": "Understanding the current user and hostname"
+   },
+   {
+    "t": "Checking the installed Linux distribution"
+   },
+   {
+    "t": "Checking the Linux kernel version"
+   },
+   {
+    "t": "Updating package information"
+   },
+   {
+    "t": "Basic Linux environment setup checklist"
+   }
+  ]
+ },
+ {
+  "title": "4.4 Linux Command-Line Fundamentals",
+  "items": [
+   {
+    "t": "What is a Linux command?"
+   },
+   {
+    "t": "Understanding command syntax"
+   },
+   {
+    "t": "Commands, options, and arguments"
+   },
+   {
+    "t": "Understanding command flags"
+   },
+   {
+    "t": "Case sensitivity in Linux"
+   },
+   {
+    "t": "Running your first Linux command"
+   },
+   {
+    "t": "Using the pwd command"
+   },
+   {
+    "t": "Using the whoami command"
+   },
+   {
+    "t": "Using the date command"
+   },
+   {
+    "t": "Using the cal command"
+   },
+   {
+    "t": "Using the uname command"
+   },
+   {
+    "t": "Using the hostname command"
+   },
+   {
+    "t": "Using the clear command"
+   },
+   {
+    "t": "Getting help with man"
+   },
+   {
+    "t": "Getting help with --help"
+   },
+   {
+    "t": "Understanding command output"
+   },
+   {
+    "t": "Understanding command errors"
+   },
+   {
+    "t": "Reusing commands with command history"
+   },
+   {
+    "t": "Navigating previous commands"
+   },
+   {
+    "t": "Common beginner command-line mistakes"
+   }
+  ]
+ },
+ {
+  "title": "4.5 Linux Filesystem Hierarchy",
+  "items": [
+   {
+    "t": "What is a filesystem?"
+   },
+   {
+    "t": "Understanding the Linux filesystem structure"
+   },
+   {
+    "t": "What is the root directory (/)?"
+   },
+   {
+    "t": "What is the home directory?"
+   },
+   {
+    "t": "Understanding the /root directory"
+   },
+   {
+    "t": "Purpose of the /bin directory"
+   },
+   {
+    "t": "Purpose of the /sbin directory"
+   },
+   {
+    "t": "Purpose of the /etc directory"
+   },
+   {
+    "t": "Purpose of the /home directory"
+   },
+   {
+    "t": "Purpose of the /var directory"
+   },
+   {
+    "t": "Purpose of the /tmp directory"
+   },
+   {
+    "t": "Purpose of the /usr directory"
+   },
+   {
+    "t": "Purpose of the /opt directory"
+   },
+   {
+    "t": "Purpose of the /dev directory"
+   },
+   {
+    "t": "Purpose of the /proc directory"
+   },
+   {
+    "t": "Purpose of the /sys directory"
+   },
+   {
+    "t": "Purpose of the /boot directory"
+   },
+   {
+    "t": "Purpose of the /mnt and /media directories"
+   },
+   {
+    "t": "Absolute paths vs. relative paths"
+   },
+   {
+    "t": "Understanding hidden files and directories"
+   },
+   {
+    "t": "Exploring the filesystem using terminal commands"
+   }
+  ]
+ },
+ {
+  "title": "4.6 Navigating Directories and Managing Files",
+  "items": [
+   {
+    "t": "Navigating directories with cd"
+   },
+   {
+    "t": "Listing files using ls"
+   },
+   {
+    "t": "Understanding ls -l"
+   },
+   {
+    "t": "Displaying hidden files using ls -a"
+   },
+   {
+    "t": "Combining command options"
+   },
+   {
+    "t": "Creating directories using mkdir"
+   },
+   {
+    "t": "Creating nested directories"
+   },
+   {
+    "t": "Creating empty files using touch"
+   },
+   {
+    "t": "Copying files using cp"
+   },
+   {
+    "t": "Copying directories"
+   },
+   {
+    "t": "Moving files using mv"
+   },
+   {
+    "t": "Renaming files and directories"
+   },
+   {
+    "t": "Removing files using rm"
+   },
+   {
+    "t": "Removing empty directories using rmdir"
+   },
+   {
+    "t": "Removing directories and their contents safely"
+   },
+   {
+    "t": "Understanding wildcard characters"
+   },
+   {
+    "t": "Using * and ? in filenames"
+   },
+   {
+    "t": "Working with multiple files"
+   },
+   {
+    "t": "Checking file and directory details"
+   },
+   {
+    "t": "Practical file and directory management exercises"
+   }
+  ]
+ },
+ {
+  "title": "4.7 Viewing and Editing Files",
+  "items": [
+   {
+    "t": "Understanding text files in Linux"
+   },
+   {
+    "t": "Displaying file contents using cat"
+   },
+   {
+    "t": "Viewing files using less"
+   },
+   {
+    "t": "Viewing files using more"
+   },
+   {
+    "t": "Displaying the beginning of a file with head"
+   },
+   {
+    "t": "Displaying the end of a file with tail"
+   },
+   {
+    "t": "Following live log output using tail -f"
+   },
+   {
+    "t": "Counting lines, words, and characters using wc"
+   },
+   {
+    "t": "Understanding file content output"
+   },
+   {
+    "t": "Introduction to text editors in Linux"
+   },
+   {
+    "t": "What is Nano?"
+   },
+   {
+    "t": "Editing files using Nano"
+   },
+   {
+    "t": "Introduction to the Vim editor"
+   },
+   {
+    "t": "Basic Vim navigation and editing"
+   },
+   {
+    "t": "Saving and exiting text editors"
+   },
+   {
+    "t": "Editing configuration files safely"
+   },
+   {
+    "t": "Understanding file encoding and line endings"
+   },
+   {
+    "t": "Practical file viewing and editing exercises"
+   }
+  ]
+ },
+ {
+  "title": "4.8 Linux Users and Groups",
+  "items": [
+   {
+    "t": "Understanding Linux users"
+   },
+   {
+    "t": "Understanding the root user"
+   },
+   {
+    "t": "Regular users vs. root"
+   },
+   {
+    "t": "What is a Linux group?"
+   },
+   {
+    "t": "Why user and group management matters"
+   },
+   {
+    "t": "Understanding user IDs (UIDs)"
+   },
+   {
+    "t": "Understanding group IDs (GIDs)"
+   },
+   {
+    "t": "Viewing the current user"
+   },
+   {
+    "t": "Listing logged-in users"
+   },
+   {
+    "t": "Understanding /etc/passwd"
+   },
+   {
+    "t": "Understanding /etc/shadow"
+   },
+   {
+    "t": "Understanding /etc/group"
+   },
+   {
+    "t": "Creating users with useradd"
+   },
+   {
+    "t": "Setting passwords using passwd"
+   },
+   {
+    "t": "Modifying user accounts using usermod"
+   },
+   {
+    "t": "Creating groups with groupadd"
+   },
+   {
+    "t": "Adding users to groups"
+   },
+   {
+    "t": "Removing users and groups safely"
+   },
+   {
+    "t": "Switching users with su"
+   },
+   {
+    "t": "Understanding sudo"
+   },
+   {
+    "t": "Principle of least privilege"
+   },
+   {
+    "t": "Basic user and group management exercises"
+   }
+  ]
+ },
+ {
+  "title": "4.9 Linux File Permissions and Ownership",
+  "items": [
+   {
+    "t": "Why Linux permissions are important"
+   },
+   {
+    "t": "Understanding read, write, and execute permissions"
+   },
+   {
+    "t": "File permissions vs. directory permissions"
+   },
+   {
+    "t": "Understanding owner, group, and others"
+   },
+   {
+    "t": "Reading permission strings such as rwxr-xr--"
+   },
+   {
+    "t": "Understanding numeric permission values"
+   },
+   {
+    "t": "Calculating permission values using 4, 2, and 1"
+   },
+   {
+    "t": "Changing permissions using chmod"
+   },
+   {
+    "t": "Symbolic vs. numeric permission notation"
+   },
+   {
+    "t": "Changing file ownership using chown"
+   },
+   {
+    "t": "Changing group ownership using chgrp"
+   },
+   {
+    "t": "Understanding default permissions"
+   },
+   {
+    "t": "What is umask?"
+   },
+   {
+    "t": "Understanding special permissions: SUID, SGID, and sticky bit"
+   },
+   {
+    "t": "Common permission-denied errors"
+   },
+   {
+    "t": "Safely managing permissions in production"
+   },
+   {
+    "t": "Practical Linux permission exercises"
+   }
+  ],
+  "important": true
+ },
+ {
+  "title": "4.10 Searching and Filtering Files",
+  "items": [
+   {
+    "t": "Why file searching is important"
+   },
+   {
+    "t": "Finding files with find"
+   },
+   {
+    "t": "Searching for files by name"
+   },
+   {
+    "t": "Searching for files by type"
+   },
+   {
+    "t": "Searching for files by size"
+   },
+   {
+    "t": "Searching for recently modified files"
+   },
+   {
+    "t": "Locating commands with which"
+   },
+   {
+    "t": "Understanding whereis"
+   },
+   {
+    "t": "Searching text using grep"
+   },
+   {
+    "t": "Case-insensitive searching with grep -i"
+   },
+   {
+    "t": "Searching recursively with grep -r"
+   },
+   {
+    "t": "Displaying matching line numbers"
+   },
+   {
+    "t": "Understanding regular-expression basics"
+   },
+   {
+    "t": "Combining find and grep"
+   },
+   {
+    "t": "Filtering command output"
+   },
+   {
+    "t": "Practical file and text search exercises"
+   }
+  ]
+ },
+ {
+  "title": "4.11 Input, Output, and Redirection",
+  "items": [
+   {
+    "t": "Understanding standard input"
+   },
+   {
+    "t": "Understanding standard output"
+   },
+   {
+    "t": "Understanding standard error"
+   },
+   {
+    "t": "What is output redirection?"
+   },
+   {
+    "t": "Redirecting output using &gt;"
+   },
+   {
+    "t": "Appending output using &gt;&gt;"
+   },
+   {
+    "t": "Redirecting errors using 2&gt;"
+   },
+   {
+    "t": "Redirecting standard output and errors"
+   },
+   {
+    "t": "Redirecting input using &lt;"
+   },
+   {
+    "t": "Understanding /dev/null"
+   },
+   {
+    "t": "What is a pipe (|)?"
+   },
+   {
+    "t": "Connecting commands using pipes"
+   },
+   {
+    "t": "Combining grep, sort, and uniq"
+   },
+   {
+    "t": "Understanding command chaining"
+   },
+   {
+    "t": "Using ;, &amp;&amp;, and ||"
+   },
+   {
+    "t": "Practical redirection and pipeline exercises"
+   }
+  ]
+ },
+ {
+  "title": "4.12 Linux Processes and Basic System Monitoring",
+  "items": [
+   {
+    "t": "What is a process?"
+   },
+   {
+    "t": "Understanding process IDs (PIDs)"
+   },
+   {
+    "t": "Parent and child processes"
+   },
+   {
+    "t": "Foreground vs. background processes"
+   },
+   {
+    "t": "Viewing processes using ps"
+   },
+   {
+    "t": "Monitoring processes using top"
+   },
+   {
+    "t": "Introduction to htop"
+   },
+   {
+    "t": "Understanding CPU and memory usage"
+   },
+   {
+    "t": "Viewing running processes with pgrep"
+   },
+   {
+    "t": "Understanding process states"
+   },
+   {
+    "t": "Sending signals to processes"
+   },
+   {
+    "t": "Stopping processes using kill"
+   },
+   {
+    "t": "Understanding kill -9 and why it should be used cautiously"
+   },
+   {
+    "t": "Running commands in the background using &amp;"
+   },
+   {
+    "t": "Understanding jobs and job control"
+   },
+   {
+    "t": "Bringing jobs to the foreground and background"
+   },
+   {
+    "t": "Understanding process priority"
+   },
+   {
+    "t": "Introduction to nice and renice"
+   },
+   {
+    "t": "Basic system resource monitoring"
+   },
+   {
+    "t": "Practical process management exercises"
+   }
+  ],
+  "important": true
+ },
+ {
+  "title": "4.13 Linux Package Management",
+  "items": [
+   {
+    "t": "What is a software package?"
+   },
+   {
+    "t": "What is a package manager?"
+   },
+   {
+    "t": "Why package management matters"
+   },
+   {
+    "t": "Understanding package repositories"
+   },
+   {
+    "t": "Package management in Ubuntu and Debian"
+   },
+   {
+    "t": "Understanding APT"
+   },
+   {
+    "t": "Updating package lists using apt update"
+   },
+   {
+    "t": "Upgrading packages using apt upgrade"
+   },
+   {
+    "t": "Installing packages using apt install"
+   },
+   {
+    "t": "Removing packages using apt remove"
+   },
+   {
+    "t": "Understanding apt purge"
+   },
+   {
+    "t": "Searching for packages"
+   },
+   {
+    "t": "Understanding RPM-based distributions"
+   },
+   {
+    "t": "Introduction to DNF and YUM"
+   },
+   {
+    "t": "Installing and removing packages on RHEL-based systems"
+   },
+   {
+    "t": "Understanding package dependencies"
+   },
+   {
+    "t": "Troubleshooting package installation failures"
+   },
+   {
+    "t": "Safe package updates on servers"
+   },
+   {
+    "t": "Practical package management exercises"
+   }
+  ]
+ },
+ {
+  "title": "4.14 Linux Services and Systemd",
+  "items": [
+   {
+    "t": "What is a Linux service?"
+   },
+   {
+    "t": "Understanding background services and daemons"
+   },
+   {
+    "t": "What is systemd?"
+   },
+   {
+    "t": "What is systemctl?"
+   },
+   {
+    "t": "Listing services"
+   },
+   {
+    "t": "Checking service status"
+   },
+   {
+    "t": "Starting a service"
+   },
+   {
+    "t": "Stopping a service"
+   },
+   {
+    "t": "Restarting and reloading services"
+   },
+   {
+    "t": "Enabling services at startup"
+   },
+   {
+    "t": "Disabling services at startup"
+   },
+   {
+    "t": "Understanding service units"
+   },
+   {
+    "t": "Viewing service logs"
+   },
+   {
+    "t": "Troubleshooting failed services"
+   },
+   {
+    "t": "Understanding service dependencies"
+   },
+   {
+    "t": "Basic service management exercises"
+   }
+  ],
+  "important": true
+ },
+ {
+  "title": "4.15 Linux Logs and Troubleshooting Basics",
+  "items": [
+   {
+    "t": "What are system logs?"
+   },
+   {
+    "t": "Why logs are important for DevOps"
+   },
+   {
+    "t": "Understanding /var/log"
+   },
+   {
+    "t": "Common Linux log files"
+   },
+   {
+    "t": "Reading log files using less"
+   },
+   {
+    "t": "Monitoring logs using tail -f"
+   },
+   {
+    "t": "Understanding systemd journal"
+   },
+   {
+    "t": "Viewing logs with journalctl"
+   },
+   {
+    "t": "Filtering logs by service"
+   },
+   {
+    "t": "Viewing logs from the current boot"
+   },
+   {
+    "t": "Understanding timestamps and log severity"
+   },
+   {
+    "t": "Recognizing common error messages"
+   },
+   {
+    "t": "Troubleshooting a failed Linux service"
+   },
+   {
+    "t": "Troubleshooting disk-space issues"
+   },
+   {
+    "t": "Troubleshooting high CPU usage"
+   },
+   {
+    "t": "Troubleshooting memory-related issues"
+   },
+   {
+    "t": "A systematic approach to Linux troubleshooting"
+   },
+   {
+    "t": "Practical log analysis exercises"
+   }
+  ],
+  "important": true
+ },
+ {
+  "title": "4.16 Linux Disk and Storage Fundamentals",
+  "items": [
+   {
+    "t": "Understanding disks and partitions"
+   },
+   {
+    "t": "What is a filesystem type?"
+   },
+   {
+    "t": "Introduction to ext4, XFS, and other filesystem types"
+   },
+   {
+    "t": "Checking disk space using df"
+   },
+   {
+    "t": "Checking directory size using du"
+   },
+   {
+    "t": "Understanding mounted filesystems"
+   },
+   {
+    "t": "Listing block devices using lsblk"
+   },
+   {
+    "t": "Viewing disk partitions"
+   },
+   {
+    "t": "Understanding mount points"
+   },
+   {
+    "t": "Understanding the mount command"
+   },
+   {
+    "t": "Understanding the umount command"
+   },
+   {
+    "t": "Introduction to /etc/fstab"
+   },
+   {
+    "t": "Understanding inode usage"
+   },
+   {
+    "t": "Checking disk-space alerts"
+   },
+   {
+    "t": "Identifying large files and directories"
+   },
+   {
+    "t": "Safe disk-space troubleshooting"
+   },
+   {
+    "t": "Practical disk usage exercises"
+   }
+  ]
+ },
+ {
+  "title": "4.17 Linux Environment Variables and Paths",
+  "items": [
+   {
+    "t": "What are environment variables?"
+   },
+   {
+    "t": "Why environment variables are used"
+   },
+   {
+    "t": "Understanding shell variables vs. environment variables"
+   },
+   {
+    "t": "Viewing variables using env"
+   },
+   {
+    "t": "Displaying variables using printenv"
+   },
+   {
+    "t": "Viewing variables using echo"
+   },
+   {
+    "t": "Creating shell variables"
+   },
+   {
+    "t": "Exporting environment variables"
+   },
+   {
+    "t": "Understanding the PATH variable"
+   },
+   {
+    "t": "Adding a directory to PATH"
+   },
+   {
+    "t": "Understanding HOME, USER, and SHELL"
+   },
+   {
+    "t": "Understanding environment configuration files"
+   },
+   {
+    "t": "Introduction to .bashrc"
+   },
+   {
+    "t": "Introduction to .profile"
+   },
+   {
+    "t": "Temporary vs. persistent environment variables"
+   },
+   {
+    "t": "Managing application configuration through environment variables"
+   },
+   {
+    "t": "Common environment variable mistakes"
+   },
+   {
+    "t": "Practical environment variable exercises"
+   }
+  ]
+ },
+ {
+  "title": "4.18 Basic Linux Networking Commands",
+  "items": [
+   {
+    "t": "Why Linux networking knowledge matters in DevOps"
+   },
+   {
+    "t": "Understanding IP addresses"
+   },
+   {
+    "t": "Understanding private and public IP addresses"
+   },
+   {
+    "t": "Understanding hostnames and DNS"
+   },
+   {
+    "t": "Viewing network interfaces using ip"
+   },
+   {
+    "t": "Checking IP configuration"
+   },
+   {
+    "t": "Testing connectivity using ping"
+   },
+   {
+    "t": "Understanding curl"
+   },
+   {
+    "t": "Making basic HTTP requests using curl"
+   },
+   {
+    "t": "Checking DNS resolution using nslookup"
+   },
+   {
+    "t": "Introduction to dig"
+   },
+   {
+    "t": "Viewing network connections using ss"
+   },
+   {
+    "t": "Checking listening ports"
+   },
+   {
+    "t": "Understanding TCP and UDP at a basic level"
+   },
+   {
+    "t": "Understanding common connection errors"
+   },
+   {
+    "t": "Basic network troubleshooting exercises"
+   }
+  ],
+  "note": {
+   "type": "info",
+   "text": "Detailed networking, firewalls, SSH administration, and advanced network troubleshooting should be covered in their dedicated roadmap topics."
+  }
+ },
+ {
+  "title": "4.19 Introduction to Bash and Shell Scripting",
+  "items": [
+   {
+    "t": "What is a shell script?"
+   },
+   {
+    "t": "Why shell scripting is useful in DevOps"
+   },
+   {
+    "t": "What is Bash?"
+   },
+   {
+    "t": "Shell commands vs. shell scripts"
+   },
+   {
+    "t": "Creating your first Bash script"
+   },
+   {
+    "t": "Understanding the shebang (#!/bin/bash)"
+   },
+   {
+    "t": "Making a script executable"
+   },
+   {
+    "t": "Running a shell script"
+   },
+   {
+    "t": "Printing output using echo"
+   },
+   {
+    "t": "Using variables in Bash"
+   },
+   {
+    "t": "Reading user input"
+   },
+   {
+    "t": "Understanding exit codes"
+   },
+   {
+    "t": "Using comments in shell scripts"
+   },
+   {
+    "t": "Basic command substitution"
+   },
+   {
+    "t": "Understanding script execution permissions"
+   },
+   {
+    "t": "Common beginner shell scripting errors"
+   },
+   {
+    "t": "Practical beginner scripting exercises"
+   }
+  ],
+  "note": {
+   "type": "info",
+   "text": "Detailed conditionals, loops, functions, error handling, and automation scripts should be covered in a dedicated shell scripting topic later in the roadmap."
+  }
+ },
+ {
+  "title": "4.20 Linux Security Fundamentals",
+  "items": [
+   {
+    "t": "Why Linux security matters in DevOps"
+   },
+   {
+    "t": "Understanding least privilege"
+   },
+   {
+    "t": "Root access and administrative privileges"
+   },
+   {
+    "t": "Safe use of sudo"
+   },
+   {
+    "t": "Basic user account security"
+   },
+   {
+    "t": "Password security fundamentals"
+   },
+   {
+    "t": "File and directory permission security"
+   },
+   {
+    "t": "Understanding SSH at a high level"
+   },
+   {
+    "t": "Why exposed services create risks"
+   },
+   {
+    "t": "Keeping packages updated"
+   },
+   {
+    "t": "Understanding security patches"
+   },
+   {
+    "t": "Introduction to firewall concepts"
+   },
+   {
+    "t": "Understanding basic audit logs"
+   },
+   {
+    "t": "Common Linux security mistakes"
+   },
+   {
+    "t": "Safe administrative practices"
+   },
+   {
+    "t": "Linux security fundamentals for production systems"
+   }
+  ]
+ }
+];
+
+// global sequential numbering — this n is what item.html?n= and content JSON "n" refer to
+let counter = 0;
+SECTIONS.forEach(sec => sec.items.forEach(it => { counter++; it.n = counter; }));
+const TOTAL = counter;
+
+let progress = deReadStore(ITEMS_KEY);
+let query = '';
+const NOTE_ICON = {info:'\u24D8', practice:'\u2605', warning:'\u26A0'};
+
+function render(){
+  const root = document.getElementById('sections');
+  root.innerHTML = '';
+  const q = query.trim().toLowerCase();
+  SECTIONS.forEach(sec=>{
+    const doneCount = sec.items.filter(it=>progress[it.n]).length;
+    const match = it => !q || it.t.toLowerCase().includes(q) || (it.tags||[]).some(tg=>tg.toLowerCase().includes(q));
+    const secEl = document.createElement('div');
+    secEl.className = 'section' + (sec.items.some(match) ? '' : ' hidden');
+    secEl.innerHTML = `<div class="section-head">
+        <span class="section-title">${sec.title}</span>
+        ${sec.important ? '<span class="star" title="Very important">&#9733;</span>' : ''}
+        ${sec.group ? `<span class="group-tag">${sec.group}</span>` : ''}
+        <span class="section-count">${doneCount}/${sec.items.length}</span></div>`;
+    if(sec.intro) secEl.innerHTML += `<div class="note note-${sec.intro.type}"><span>${NOTE_ICON[sec.intro.type]}</span><span>${sec.intro.text}</span></div>`;
+    const wrap = document.createElement('div'); wrap.className = 'items';
+    sec.items.forEach(it=>{
+      const isDone = !!progress[it.n];
+      const row = document.createElement('div');
+      row.className = 'item' + (isDone?' done':'') + (match(it)?'':' item-hidden');
+      row.innerHTML = `<span class="item-num">${it.n}</span>
+        <span class="check" data-n="${it.n}">${isDone?'\u2713':''}</span>
+        <span class="item-body">
+          <a class="item-text" href="../../item.html?topic=${CONTENT_SLUG}&n=${it.n}">${it.t}${it.optional?'<span class="opt-tag">optional</span>':''}<span class="item-arrow">&rarr;</span></a>
+          ${it.tags ? `<div class="item-tags">${it.tags.map(tg=>`<span class="item-tag">${tg}</span>`).join('')}</div>` : ''}
+        </span>`;
+      row.querySelector('.check').addEventListener('click', ()=>toggleItem(it.n));
+      wrap.appendChild(row);
+    });
+    secEl.appendChild(wrap);
+    if(sec.commands){
+      const box = document.createElement('div'); box.className = 'cmdbox';
+      box.innerHTML = `<div class="cmdbox-head"><span class="cmdbox-label">Commands</span><button class="copy-btn">Copy</button></div><pre>${sec.commands.join('\n')}</pre>`;
+      box.querySelector('.copy-btn').addEventListener('click', e=>{
+        navigator.clipboard.writeText(sec.commands.join('\n')).then(()=>{ e.target.textContent='Copied'; setTimeout(()=>e.target.textContent='Copy',1400); }).catch(()=>{});
+      });
+      secEl.appendChild(box);
+    }
+    if(sec.workflow){
+      const wf = document.createElement('div'); wf.className = 'workflow';
+      wf.innerHTML = sec.workflow.map((s,i)=>`<div class="wf-step"><span class="wf-dot"></span><span class="wf-text">${s}</span></div>${i<sec.workflow.length-1?'<div class="wf-line"></div>':''}`).join('');
+      secEl.appendChild(wf);
+    }
+    if(sec.note){
+      const n = document.createElement('div'); n.className = `note note-${sec.note.type}`;
+      n.innerHTML = `<span>${NOTE_ICON[sec.note.type]}</span><span>${sec.note.text}</span>`;
+      n.style.marginBottom = '18px'; secEl.appendChild(n);
+    } else secEl.style.paddingBottom = '2px';
+    root.appendChild(secEl);
+  });
+  updateRing();
+}
+function updateRing(){
+  const done = Object.keys(progress).filter(k=>progress[k]).length;
+  document.getElementById('progressNum').textContent = `${done}/${TOTAL}`;
+  deUpdateRing(document.getElementById('ringFill'), done, TOTAL);
+}
+function toggleItem(n){
+  if(progress[n]) delete progress[n]; else progress[n] = true;
+  deWriteStore(ITEMS_KEY, progress);
+  deSyncTopicToRoadmap(TOPIC_ID, TOTAL);
+  render();
+}
+document.getElementById('search').addEventListener('input', e=>{ query = e.target.value; render(); });
+// refresh when coming back from an item page
+window.addEventListener('focus', ()=>{ progress = deReadStore(ITEMS_KEY); render(); });
+window.addEventListener('pageshow', ()=>{ progress = deReadStore(ITEMS_KEY); render(); });
+render();
+</script>
+</body>
+</html>
